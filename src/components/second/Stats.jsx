@@ -231,8 +231,8 @@ function Stats() {
     <div className='bg-white'>
 
         <div className='container mt-20'>
-            <Box sx={{ width: '100%' }}>
-            <Paper sx={{ width: '100%', mb: 2 }}>
+            <Box sx={{ width: '100%' }} className='border-0'>
+            <Paper sx={{ width: '100%', mb: 2 }} className=' shadow-none'>
             <TableContainer>
             <Table
                 sx={{ minWidth: 750 }}
@@ -258,6 +258,7 @@ function Stats() {
                         id={labelId}
                         scope="row"
                         padding="none"
+                        className=' border-l-2'
                         >
                        
                         <a href="" className='font-semibold '>
@@ -273,14 +274,14 @@ function Stats() {
 
 
                         </TableCell>
-                        <TableCell className='font-semibold border-l-2 border-r-2 ' align="left">€ {row.avgprice}</TableCell>
+                        <TableCell className='font-medium border-l-2 border-r-2 ' align="left">€ {row.avgprice}</TableCell>
                         {}
-                        <TableCell className='font-semibold border-l-2 border-r-2 '  align="left">{row.troughcurrent}%</TableCell>
-                        <TableCell className='font-semibold border-l-2 border-r-2 '  align="left">{row.peakcurrent}%</TableCell>
-                        <TableCell className='font-semibold border-l-2 border-r-2 '  align="left">{row.last12}%</TableCell>
-                        <TableCell className='font-semibold border-l-2 border-r-2 '  align="left">{row.last3}%</TableCell>
-                        <TableCell className='font-semibold border-l-2 border-r-2 '  align="left">{row.lastmonth}%</TableCell>
-                        <TableCell className='font-semibold border-l-2 border-r-2 '  align="left"><PositiveAndNegativeBarChart/></TableCell>
+                        <TableCell className='font-medium border-l-2 border-r-2 '  align="left">{row.troughcurrent}%</TableCell>
+                        <TableCell className='font-medium border-l-2 border-r-2 '  align="left">{row.peakcurrent}%</TableCell>
+                        <TableCell className='font-medium border-l-2 border-r-2 '  align="left">{row.last12}%</TableCell>
+                        <TableCell className='font-medium border-l-2 border-r-2 '  align="left">{row.last3}%</TableCell>
+                        <TableCell className='font-medium border-l-2 border-r-2 '  align="left">{row.lastmonth}%</TableCell>
+                        <TableCell className='font-medium border-l-2 border-r-2 '  align="left"><PositiveAndNegativeBarChart/></TableCell>
                     </TableRow>
                     );
                 })}
@@ -290,17 +291,17 @@ function Stats() {
                         component="th"
                         scope="row"
                         padding="none"
-                        className='bg-[#e9f5fe] font-semibold pl-2'
+                        className='bg-[#e9f5fe] font-semibold pl-2  border-l-2'
                         >
                           Famagusta
                         </TableCell>
-                        <TableCell className='font-semibold border-l-2 border-r-2 bg-[#e9f5fe]' align="left">€ 3422</TableCell>
-                        <TableCell className='font-semibold border-l-2 border-r-2 bg-[#e9f5fe]' align="left">-5%</TableCell>
-                        <TableCell className='font-semibold border-l-2 border-r-2 bg-[#e9f5fe]' align="left">4.8%</TableCell>
-                        <TableCell className='font-semibold border-l-2 border-r-2 bg-[#e9f5fe]' align="left">-0.3%</TableCell>
-                        <TableCell className='font-semibold border-l-2 border-r-2 bg-[#e9f5fe]' align="left">0%</TableCell>
-                        <TableCell className='font-semibold border-l-2 border-r-2 bg-[#e9f5fe]' align="left">-0.7%</TableCell>
-                        <TableCell className='font-semibold border-l-2 border-r-2 bg-[#e9f5fe]' align="left"><PositiveAndNegativeBarChart/></TableCell>
+                        <TableCell className='font-medium border-l-2 border-r-2 bg-[#e9f5fe]' align="left">€ 3422</TableCell>
+                        <TableCell className='font-medium border-l-2 border-r-2 bg-[#e9f5fe]' align="left">-5%</TableCell>
+                        <TableCell className='font-medium border-l-2 border-r-2 bg-[#e9f5fe]' align="left">4.8%</TableCell>
+                        <TableCell className='font-medium border-l-2 border-r-2 bg-[#e9f5fe]' align="left">-0.3%</TableCell>
+                        <TableCell className='font-medium border-l-2 border-r-2 bg-[#e9f5fe]' align="left">0%</TableCell>
+                        <TableCell className='font-medium border-l-2 border-r-2 bg-[#e9f5fe]' align="left">-0.7%</TableCell>
+                        <TableCell className='font-medium border-l-2 border-r-2 bg-[#e9f5fe]' align="left"><PositiveAndNegativeBarChart/></TableCell>
                     </TableRow>
                 {emptyRows > 0 && (
                     <TableRow

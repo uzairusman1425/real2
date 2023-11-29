@@ -1,3 +1,5 @@
+
+
 "use client"
 
 
@@ -11,32 +13,32 @@ import Header from '@/components/header/Header'
 import Footer from '@/components/footer/Footer'
 import Stats from '@/components/second/Stats'
 import Formdetails from '@/components/second/Formdetails'
-import MyBarChart from '@/components/second/MyBarChart'
-import PositiveAndNegativeBarChart from '@/components/second/PositiveAndNegativeBarChart'
+import Headerfooter from '@/components/headerfooter/HeaderFooter'
 
 export default function Home() {
-
+  
   useEffect(() => {
     // console.log(City.getCitiesOfCountry("CY"));
-
+  
   }, [])
-
+  
 
   return (
     <main className="flex overflow-hidden min-h-screen flex-col items-center justify-between">
-      <div id='main' className='flex p-0 m-0 flex-col'>
-        <Header />
-        <Image_body />
-        <Selection />
-        <Mapsection />
-        <Stats />
-        <Formdetails />
-        <Footer />
+      <div id='main' className='flex p-0 m-0 flex-col bg-white'>
+        
+        <Headerfooter>
 
+        <Image_body/>
+        <Selection/>
+        <Mapsection/>
+        <Stats/>
+        <Formdetails/>
+      
+        </Headerfooter>
+        
 
-      </div>
+      </div>      
     </main>
   )
 }
-
-export default page
