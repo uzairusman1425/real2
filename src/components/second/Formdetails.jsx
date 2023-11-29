@@ -9,7 +9,7 @@ import { blueGrey } from '@mui/material/colors';
 function Formdetails() {
   return (
     <div className='bg-white flex'>
-        <div id='Card' className='container h-[500px] border-2 flex flex-col mt-24 mb-10 shadow-lg '>
+        <div id='Card' className='container h-auto border-2 flex flex-col mt-24 mb-10 shadow-lg '>
             <div id='header' className='flex items-center justify-center my-5'>
                 <p className='tracking-[-0.4em] text-gray-300'>===================================================</p>
                 <SvgIcon className='ml-5' sx={{fontSize: 50 , color:'#70757c'}} component={RocketIcon} />
