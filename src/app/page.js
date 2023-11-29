@@ -11,15 +11,10 @@ import Header from '@/components/header/Header'
 import Footer from '@/components/footer/Footer'
 import Stats from '@/components/second/Stats'
 import Formdetails from '@/components/second/Formdetails'
-import MyBarChart from '@/components/second/MyBarChart'
-import PositiveAndNegativeBarChart from '@/components/second/PositiveAndNegativeBarChart'
 
-export default function Home() {
 
-  useEffect(() => {
-    // console.log(City.getCitiesOfCountry("CY"));
 
-  }, [])
+export default function page() {
 
 
   return (
@@ -31,6 +26,7 @@ export default function Home() {
         <Mapsection />
         <Stats />
         <Formdetails />
+
         <Footer />
 
 
@@ -38,5 +34,3 @@ export default function Home() {
     </main>
   )
 }
-
-export default page

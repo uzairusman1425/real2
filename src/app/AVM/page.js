@@ -15,30 +15,25 @@ import Stats from '@/components/second/Stats'
 import Formdetails from '@/components/second/Formdetails'
 import Headerfooter from '@/components/headerfooter/HeaderFooter'
 
-export default function Home() {
-  
-  useEffect(() => {
-    // console.log(City.getCitiesOfCountry("CY"));
-  
-  }, [])
-  
+export default function page() {
+
 
   return (
     <main className="flex overflow-hidden min-h-screen flex-col items-center justify-between">
       <div id='main' className='flex p-0 m-0 flex-col bg-white'>
-        
+
         <Headerfooter>
 
-        <Image_body/>
-        <Selection/>
-        <Mapsection/>
-        <Stats/>
-        <Formdetails/>
-      
-        </Headerfooter>
-        
+          <Image_body />
+          <Selection />
+          <Mapsection />
+          <Stats />
+          <Formdetails />
 
-      </div>      
+        </Headerfooter>
+
+
+      </div>
     </main>
   )
 }

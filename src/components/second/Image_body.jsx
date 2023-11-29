@@ -9,13 +9,13 @@ import zIndex from '@mui/material/styles/zIndex'
 
 function Image_body() {
   return (
-<>
-    <div className='bg-[#38373c]'>
-      <div className="bg-[url('https://realtor.com.cy/assets/images/avm_top_banner.svg') bg-fixed bg-center bg-cover z-10 w-vw h-auto flex justify-center">
-          <Image src={photo2_bg} width={1100} />
+    <>
+      <div className='bg-[#38373c]'>
+        <div className="bg-[url('https://realtor.com.cy/assets/images/avm_top_banner.svg') bg-fixed bg-center bg-cover z-10 w-vw h-auto flex justify-center">
+          <Image src={photo2_bg} width={1100} alt='image_body' />
+        </div>
       </div>
-    </div>
-  </>
+    </>
   )
 
 }
@@ -23,17 +23,17 @@ function Image_body() {
 export default Image_body
 
 // <div id="image" className='w-[70%] mx-auto items-center'>
-    //       {/* <Image src={property} className='w-screen ' alt='No picture found'/> */}
-    //       <h1 className='text-4xl h-[100%] text-white relative'>Checking if text on div</h1>
-    //       <div className=''  style={{
-    //         position: "relative",
-    //         zIndex: -1,
-    //         width: "100%"
-    //       }}>
+//       {/* <Image src={property} className='w-screen ' alt='No picture found'/> */}
+//       <h1 className='text-4xl h-[100%] text-white relative'>Checking if text on div</h1>
+//       <div className=''  style={{
+//         position: "relative",
+//         zIndex: -1,
+//         width: "100%"
+//       }}>
 
-    //         <Image src={photo1_bg} className='container mx-auto'/>
-    //       </div>
-    //   </div>
+//         <Image src={photo1_bg} className='container mx-auto'/>
+//       </div>
+//   </div>
 // {/* <div className='bg-[#38373c]'>
 
 //       <div className="mx-auto w-[50vw] h-80 flex  align-middle items-center bg-[#38373c] ">
