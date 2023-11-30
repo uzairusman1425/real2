@@ -20,7 +20,6 @@ import { SvgIcon } from '@mui/material';
 import ShowChartOutlinedIcon from '@mui/icons-material/ShowChartOutlined';
 import { yellow } from '@mui/material/colors';
 import PositiveAndNegativeBarChart from './PositiveAndNegativeBarChart';
-import Recharts from './Recharts';
 
 function createData(id, city, avgprice, troughcurrent, peakcurrent, last12,last3,lastmonth,yearonyear) {
     return {
@@ -140,10 +139,9 @@ function createData(id, city, avgprice, troughcurrent, peakcurrent, last12,last3
       <TableHead>
         <TableRow>
           
-          {headCells.map((headCell , index) => (
+          {headCells.map((headCell) => (
             <TableCell
-            
-              key={index}
+              key={headCell.id}
               align={headCell.numeric ? 'right' : 'left'}
               padding={headCell.disablePadding ? 'none' : 'normal'}
               sortDirection={orderBy === headCell.id ? order : false}
@@ -253,7 +251,7 @@ function Stats() {
                     const labelId = `enhanced-table-checkbox-${index}`;
 
                     return (
-                    <TableRow key={index}>
+                    <TableRow>
                         
                         <TableCell
                         component="th"
@@ -263,8 +261,7 @@ function Stats() {
                         className=' border-l-2'
                         >
                        
-                       
-                        <Link href="" className='font-semibold '>
+                        <a href="" className='font-semibold '>
                           <div className='flex items-center'>
                             <div className='flex items-center hover:text-blue-900 text-[#177bff] hover:underline'>
                               <SvgIcon component={ShowChartOutlinedIcon} sx={{ color: 'blue', '&:hover':{
@@ -273,17 +270,18 @@ function Stats() {
                               {row.city}
                             </div>
                           </div>
-                        </Link>
+                        </a>
 
 
                         </TableCell>
                         <TableCell className='font-medium border-l-2 border-r-2 ' align="left">€ {row.avgprice}</TableCell>
+                        {}
                         <TableCell className='font-medium border-l-2 border-r-2 '  align="left">{row.troughcurrent}%</TableCell>
                         <TableCell className='font-medium border-l-2 border-r-2 '  align="left">{row.peakcurrent}%</TableCell>
                         <TableCell className='font-medium border-l-2 border-r-2 '  align="left">{row.last12}%</TableCell>
                         <TableCell className='font-medium border-l-2 border-r-2 '  align="left">{row.last3}%</TableCell>
                         <TableCell className='font-medium border-l-2 border-r-2 '  align="left">{row.lastmonth}%</TableCell>
-                        <TableCell className='font-medium border-l-2 border-r-2 py-1 '  align="left"><Recharts/></TableCell>
+                        <TableCell className='font-medium border-l-2 border-r-2 '  align="left"><PositiveAndNegativeBarChart/></TableCell>
                     </TableRow>
                     );
                 })}
@@ -303,7 +301,7 @@ function Stats() {
                         <TableCell className='font-medium border-l-2 border-r-2 bg-[#e9f5fe]' align="left">-0.3%</TableCell>
                         <TableCell className='font-medium border-l-2 border-r-2 bg-[#e9f5fe]' align="left">0%</TableCell>
                         <TableCell className='font-medium border-l-2 border-r-2 bg-[#e9f5fe]' align="left">-0.7%</TableCell>
-                        <TableCell className='font-medium border-l-2 border-r-2 bg-[#e9f5fe] py-1' align="left"><Recharts/></TableCell>
+                        <TableCell className='font-medium border-l-2 border-r-2 bg-[#e9f5fe]' align="left"><PositiveAndNegativeBarChart/></TableCell>
                     </TableRow>
                 {emptyRows > 0 && (
                     <TableRow

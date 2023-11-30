@@ -38,7 +38,10 @@ export default function Home() {
         </Headerfooter>
         
 
-      </div>      
+        
+
+
+      </div>
     </main>
   )
 }

@@ -19,8 +19,7 @@ function Image_body() {
            </p>
           </div>
       </div>
-    </div>
-  </>
+    </>
   )
 
 }
@@ -28,17 +27,17 @@ function Image_body() {
 export default Image_body
 
 // <div id="image" className='w-[70%] mx-auto items-center'>
-    //       {/* <Image src={property} className='w-screen ' alt='No picture found'/> */}
-    //       <h1 className='text-4xl h-[100%] text-white relative'>Checking if text on div</h1>
-    //       <div className=''  style={{
-    //         position: "relative",
-    //         zIndex: -1,
-    //         width: "100%"
-    //       }}>
+//       {/* <Image src={property} className='w-screen ' alt='No picture found'/> */}
+//       <h1 className='text-4xl h-[100%] text-white relative'>Checking if text on div</h1>
+//       <div className=''  style={{
+//         position: "relative",
+//         zIndex: -1,
+//         width: "100%"
+//       }}>
 
-    //         <Image src={photo1_bg} className='container mx-auto'/>
-    //       </div>
-    //   </div>
+//         <Image src={photo1_bg} className='container mx-auto'/>
+//       </div>
+//   </div>
 // {/* <div className='bg-[#38373c]'>
 
 //       <div className="mx-auto w-[50vw] h-80 flex  align-middle items-center bg-[#38373c] ">
