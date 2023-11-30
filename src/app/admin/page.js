@@ -1,8 +1,10 @@
 "use client"
+import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 
 const Page = () => {
-
+    
+    const router = useRouter();
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -12,7 +14,7 @@ const Page = () => {
         event.preventDefault();
         if (username === "username" && password === "123456") {
             localStorage.setItem("session", "session")
-
+            router.push('/addcity')
         } else {
             alert("user not exist")
         }
