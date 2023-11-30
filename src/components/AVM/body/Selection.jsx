@@ -11,9 +11,9 @@ function Selection() {
   return (
     <div className='w-screen bg-white'>
 
-        <div id="selection-section " className='container flex flex-col h-28 text-center justify-center'>
+        <div id="selection-section " className='container flex flex-col h-auto text-center justify-center'>
           <p className='my-3 text-xl font-semibold'>Automated Value Model AVM based on location and property type</p>
-          <div id="selection" className='flex justify-between'>
+          <div id="selection" className='flex justify-evenly flex-wrap'>
             <ReactFlagsSelect 
               selected={selected}
               onSelect={(code) => setSelected(code)}
@@ -25,16 +25,15 @@ function Selection() {
             />
             <select name="" id="cities" className='w-[20rem] border-2 rounded-md h-9'>
             <option value="-" defaultValue={null} className='text-white'>Cities</option>
-              {City?.getCitiesOfCountry("CY")?.map((item,key)=>{
-                return(
-                  <>
-                    <option value={item.name} key={key}>{item.name}</option>
-                  </>
-                )
+              {City?.getCitiesOfCountry("CY")?.map((item,index)=>{
+                return <option value={item.name} key={index}>{item.name}</option>
+                  
               })}
             </select>
             <select name="" id="property_type" className='w-72 border-2 rounded-md h-9'>
-            <option value="-" defaultValue={null}>Property Type</option>
+            <option value="-" defaultValue={null}>
+            
+            </option>
               
             </select>
 

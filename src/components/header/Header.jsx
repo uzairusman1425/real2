@@ -2,11 +2,11 @@ import React from 'react'
 import Logo from '@/components/header/Logo'
 import Navbar from '@/components/header/Navbar'
 
-function Header() {
+function Header({page}) {
   return (
     <>
         <Logo/>
-        <Navbar/>
+        <Navbar page={page}/>
     </>
   )
 }

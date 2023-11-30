@@ -6,14 +6,13 @@
 import { useEffect, useState } from 'react'
 
 
-import Image_body from '@/components/second/Image_body'
-import Selection from '@/components/second/Selection'
-import Mapsection from '@/components/second/Mapsection'
-import Header from '@/components/header/Header'
-import Footer from '@/components/footer/Footer'
-import Stats from '@/components/second/Stats'
-import Formdetails from '@/components/second/Formdetails'
+import Image_body from '@/components/AVM/body/Image_body'
+import Selection from '@/components/AVM/body/Selection'
+import Mapsection from '@/components/AVM/body/Mapsection'
+import Stats from '@/components/AVM/body/Stats'
+import Formdetails from '@/components/AVM/body/Formdetails'
 import Headerfooter from '@/components/headerfooter/HeaderFooter'
+
 
 export default function Home() {
   
@@ -27,14 +26,15 @@ export default function Home() {
     <main className="flex overflow-hidden min-h-screen flex-col items-center justify-between">
       <div id='main' className='flex p-0 m-0 flex-col bg-white'>
         
-        <Headerfooter>
+        <Headerfooter page={'AVM'}>
 
         <Image_body/>
         <Selection/>
         <Mapsection/>
         <Stats/>
         <Formdetails/>
-      
+        
+
         </Headerfooter>
         
 

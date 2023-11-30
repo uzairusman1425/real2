@@ -3,10 +3,10 @@ import Header from '@/components/header/Header'
 import Footer from '../footer/Footer'
 
 
-function Headerfooter({children}) {
+function Headerfooter({children,page}) {
   return (
-    <div className='flex flex-col h-[100vh] overflow-auto'>
-        <Header/>
+    <div className='flex flex-col h-[100vh] w-[100vw] overflow-auto overflow-x-hidden '>
+        <Header page={page} />
         <div className='flex-grow'>
             {children}
         </div>

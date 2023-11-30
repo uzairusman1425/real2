@@ -1,11 +1,12 @@
+import Main from '@/components/Home/Main'
 import Headerfooter from '@/components/headerfooter/HeaderFooter'
 import React from 'react'
 const page = () => {
   return (
     <>
-    <Headerfooter>
+    <Headerfooter page={'home'}>
+    <Main/>
       
-      <div>page</div>
     </Headerfooter>
     </>
   )
