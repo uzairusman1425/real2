@@ -15,6 +15,7 @@
     "@mui/icons-material": "^5.14.18",
     "@mui/material": "^5.14.18",
     "@mui/x-charts": "^6.18.2",
+    "@react-google-maps/api": "^2.19.2",
     "chart.js": "^4.4.0",
     "countries-list": "^3.0.6",
     "country-state-city": "^3.2.1",

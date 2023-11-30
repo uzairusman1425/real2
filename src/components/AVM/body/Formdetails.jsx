@@ -44,25 +44,7 @@ function Formdetails() {
                     </div>
                 </div>
 
-                <div id="right" className='w-[50%]'>
-                    <form action="" className='flex flex-wrap mx-10 justify-between'>
-                        <input type="text" placeholder='First Name' className=' border-2 w-[46.7%] py-2 px-2 rounded-md mx-2 my-2' />
-                        <input type="text" placeholder='Last Name' className=' border-2 w-[46.7%] py-2 px-2 rounded-md mx-2 my-2' />
-                        <input type="text" placeholder='Email' className=' border-2 w-[46.7%] py-2 px-2 rounded-md mx-2 my-2' />
-                        <input type="text" placeholder='Phone' className=' border-2 w-[46.7%] py-2 px-2 rounded-md mx-2 my-2' />
-                        <input type="text" placeholder='Company' className=' border-2 w-[46.7%] py-2 px-2 rounded-md mx-2 my-2' />
-                        <input type="text" placeholder='Title' className=' border-2 w-[46.7%] py-2 px-2 rounded-md mx-2 my-2' />
-                        <select name="avmaccount" id=""  className=' border-2 w-[100%] py-2 px-2 rounded-md mx-2 my-2 text-gray-400'>
-                            <option value="1" defaultValue={null}>Interested for corporate AVM account</option>
-                            <option value="2">Interested for online training of the system</option>
-                            <option value="3">Report a problem</option>
-                            <option value="4">Request a call back</option>
-                        </select>
-                        <div className='w-full flex justify-center'>
-                            <input type="button" value="Request more info" className='bg-[#ed1d24] text-white px-8 py-4 rounded mx-auto my-2 self-center' />
-                        </div>
-                    </form>
-                </div>
+               
             </div>
         </div>
     )

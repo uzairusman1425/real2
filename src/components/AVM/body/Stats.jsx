@@ -20,6 +20,7 @@ import { SvgIcon } from '@mui/material';
 import ShowChartOutlinedIcon from '@mui/icons-material/ShowChartOutlined';
 import { yellow } from '@mui/material/colors';
 import PositiveAndNegativeBarChart from './PositiveAndNegativeBarChart';
+import Recharts from './Recharts';
 
 function createData(id, city, avgprice, troughcurrent, peakcurrent, last12,last3,lastmonth,yearonyear) {
     return {
@@ -281,7 +282,7 @@ function Stats() {
                         <TableCell className='font-medium border-l-2 border-r-2 '  align="left">{row.last12}%</TableCell>
                         <TableCell className='font-medium border-l-2 border-r-2 '  align="left">{row.last3}%</TableCell>
                         <TableCell className='font-medium border-l-2 border-r-2 '  align="left">{row.lastmonth}%</TableCell>
-                        <TableCell className='font-medium border-l-2 border-r-2 '  align="left"><PositiveAndNegativeBarChart/></TableCell>
+                        <TableCell className='font-medium border-l-2 border-r-2 py-1'  align="left"><Recharts/></TableCell>
                     </TableRow>
                     );
                 })}
@@ -301,7 +302,7 @@ function Stats() {
                         <TableCell className='font-medium border-l-2 border-r-2 bg-[#e9f5fe]' align="left">-0.3%</TableCell>
                         <TableCell className='font-medium border-l-2 border-r-2 bg-[#e9f5fe]' align="left">0%</TableCell>
                         <TableCell className='font-medium border-l-2 border-r-2 bg-[#e9f5fe]' align="left">-0.7%</TableCell>
-                        <TableCell className='font-medium border-l-2 border-r-2 bg-[#e9f5fe]' align="left"><PositiveAndNegativeBarChart/></TableCell>
+                        <TableCell className='font-medium border-l-2 border-r-2 bg-[#e9f5fe] py-1' align="left"><Recharts/></TableCell>
                     </TableRow>
                 {emptyRows > 0 && (
                     <TableRow
