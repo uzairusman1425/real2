@@ -1,9 +1,7 @@
-import Image from 'next/image'
 import React from 'react'
 import RocketIcon from '@mui/icons-material/Rocket';
 import PermPhoneMsgIcon from '@mui/icons-material/PermPhoneMsg';
 import { SvgIcon } from '@mui/material';
-import { blueGrey } from '@mui/material/colors';
 
 
 function Formdetails() {

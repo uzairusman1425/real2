@@ -1,11 +1,4 @@
-
-
 "use client"
-
-
-import { useEffect, useState } from 'react'
-
-
 import Image_body from '@/components/AVM/body/Image_body'
 import Selection from '@/components/AVM/body/Selection'
 import Mapsection from '@/components/AVM/body/Mapsection'
@@ -16,10 +9,7 @@ import Headerfooter from '@/components/headerfooter/HeaderFooter'
 
 export default function Home() {
   
-  useEffect(() => {
-    // console.log(City.getCitiesOfCountry("CY"));
-  
-  }, [])
+
   
 
   return (

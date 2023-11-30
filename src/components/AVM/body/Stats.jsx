@@ -1,9 +1,6 @@
-import Image from 'next/image'
-import graphicon from '@/assets/graph.svg'
-import Link from 'next/link'
+
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -12,14 +9,10 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TableSortLabel from '@mui/material/TableSortLabel';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import { visuallyHidden } from '@mui/utils';
 import { SvgIcon } from '@mui/material';
 import ShowChartOutlinedIcon from '@mui/icons-material/ShowChartOutlined';
-import { yellow } from '@mui/material/colors';
-import PositiveAndNegativeBarChart from './PositiveAndNegativeBarChart';
 import Recharts from './Recharts';
 
 function createData(id, city, avgprice, troughcurrent, peakcurrent, last12,last3,lastmonth,yearonyear) {
@@ -140,9 +133,9 @@ function createData(id, city, avgprice, troughcurrent, peakcurrent, last12,last3
       <TableHead>
         <TableRow>
           
-          {headCells.map((headCell) => (
+          {headCells.map((headCell,index) => (
             <TableCell
-              key={headCell.id}
+              key={index}
               align={headCell.numeric ? 'right' : 'left'}
               padding={headCell.disablePadding ? 'none' : 'normal'}
               sortDirection={orderBy === headCell.id ? order : false}
@@ -252,7 +245,7 @@ function Stats() {
                     const labelId = `enhanced-table-checkbox-${index}`;
 
                     return (
-                    <TableRow>
+                    <TableRow key={index}>
                         
                         <TableCell
                         component="th"

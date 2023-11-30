@@ -1,8 +1,7 @@
 import React from 'react'
-import { countries } from 'countries-list'
-import { getCountryCode, getCountryData, getCountryDataList, getEmojiFlag } from 'countries-list'
+
 import ReactFlagsSelect from "react-flags-select";
-import { Country, State, City }  from 'country-state-city';
+import {  City }  from 'country-state-city';
 import { useState } from 'react';
 
 function Selection() {

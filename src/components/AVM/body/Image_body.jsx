@@ -1,9 +1,5 @@
 import React from 'react'
-import Image from 'next/image'
 
-import photo1_bg from '@/assets/avm_top_banner.svg'
-import photo2_bg from '@/assets/final_avm_top_banner-svg.png'
-import zIndex from '@mui/material/styles/zIndex'
 
 
 
