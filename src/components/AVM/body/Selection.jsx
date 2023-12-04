@@ -3,6 +3,7 @@ import React from 'react'
 import ReactFlagsSelect from "react-flags-select";
 import {  City }  from 'country-state-city';
 import { useState } from 'react';
+import PropertyType from '../../AVM/body/PropertyType/PropertyType';
 
 function Selection() {
     const [selected, setSelected] = useState("");
@@ -22,19 +23,14 @@ function Selection() {
               countries={["CY"]}
               className='w-72 text-xs '
             />
-            <select name="" id="cities" className='w-[20rem] border-2 rounded-md h-9'>
+            <select name="" id="cities" className='w-[20rem] border-gray-300 border-[1px] rounded-md h-9'>
             <option value="-" defaultValue={null} className='text-white'>Cities</option>
               {City?.getCitiesOfCountry("CY")?.map((item,index)=>{
                 return <option value={item.name} key={index}>{item.name}</option>
                   
               })}
             </select>
-            <select name="" id="property_type" className='w-72 border-2 rounded-md h-9'>
-            <option value="-" defaultValue={null}>
-            
-            </option>
-              
-            </select>
+            <PropertyType/>
 
             <button type='button' className='bg-green-500 h-9 text-white w-56' >Search</button>
           </div>

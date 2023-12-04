@@ -1,10 +1,10 @@
 "use client"
-import Image_body from '@/components/AVM/body/Image_body'
-import Selection from '@/components/AVM/body/Selection'
-import Mapsection from '@/components/AVM/body/Mapsection'
-import Stats from '@/components/AVM/body/Stats'
-import Formdetails from '@/components/AVM/body/Formdetails'
-import Headerfooter from '@/components/headerfooter/HeaderFooter'
+import Image_body from '../../components/AVM/body/Image_body'
+import Selection from '../../components/AVM/body/Selection'
+import Mapsection from '../../components/AVM/body/Mapsection'
+import Stats from '../../components/AVM/body/Stats'
+import Formdetails from '../../components/AVM/body/Formdetails'
+import Headerfooter from '../../components/headerfooter/HeaderFooter'
 
 
 export default function Home() {

@@ -1,11 +1,11 @@
 import React from 'react'
-import facebook from "@/assets/icons8-facebook.svg"
-import pinterest from "@/assets/icons8-pinterest.svg"
-import twitter from "@/assets/icons8-twitter.svg"
-import linkedin from "@/assets/icons8-linkedin.svg"
-import grid from "@/assets/icons8-grid-64.png"
+import facebook from "../../../assets/icons8-facebook.svg"
+import pinterest from "../../../assets/icons8-pinterest.svg"
+import twitter from "../../../assets/icons8-twitter.svg"
+import linkedin from "../../../assets/icons8-linkedin.svg"
+import grid from "../../../assets/icons8-grid-64.png"
 import Image from 'next/image'
-import GoolgeMap from '@/components/GoolgeMap/MyComponent'
+import GoolgeMap from '../../GoolgeMap/MyComponent'
 
 
 

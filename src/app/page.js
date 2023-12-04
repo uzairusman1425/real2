@@ -1,5 +1,5 @@
-import Main from '@/components/Home/Main'
-import Headerfooter from '@/components/headerfooter/HeaderFooter'
+import Main from '../components/Home/Main'
+import Headerfooter from '../components/headerfooter/HeaderFooter'
 import React from 'react'
 const page = () => {
   return (

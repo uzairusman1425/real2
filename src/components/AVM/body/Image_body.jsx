@@ -1,8 +1,5 @@
 import React from 'react'
 
-
-
-
 function Image_body() {
   return (
 

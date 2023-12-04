@@ -1,6 +1,8 @@
 "use client"
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
+import axios from 'axios'
+
 
 const Page = () => {
     
@@ -9,21 +11,34 @@ const Page = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
    
+    const checkLogin = async () => {
+        const response = await fetch('../api/admin/login',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({username, password})
+        })
+        const reply= await response.json()
+
+        if (response.ok) {
+            localStorage.setItem("session", "session")
+            router.push('/addcity')
+            alert(`${reply.message}`)
+        } else {
+            alert(`${reply.error}`)
+        }
+    }
    
     const Check = (event) => {
         event.preventDefault();
-        if (username === "username" && password === "123456") {
-            localStorage.setItem("session", "session")
-            router.push('/addcity')
-        } else {
-            alert("user not exist")
-        }
+        checkLogin();
     }
     return (
         <div className='flex flex-row justify-center items-center'>
             <form className='flex flex-col justify-center items-center mt-40' onSubmit={Check}>
                 <input
-                    class='mb-5 px-4 py-2 text-lg text-gray-700 border-2 border-gray-300 rounded-md focus:outline-none focus:border-blue-500'
+                    className='mb-5 px-4 py-2 text-lg text-gray-700 border-2 border-gray-300 rounded-md focus:outline-none focus:border-blue-500'
                     type='text'
                     required
                     placeholder='Username'
@@ -33,7 +48,7 @@ const Page = () => {
                     value={username}
                 />
                 <input
-                    class='mb-5 px-4 py-2 text-lg text-gray-700 border-2 border-gray-300 rounded-md focus:outline-none focus:border-blue-500'
+                    className='mb-5 px-4 py-2 text-lg text-gray-700 border-2 border-gray-300 rounded-md focus:outline-none focus:border-blue-500'
                     type='password'
                     required
                     placeholder='password'

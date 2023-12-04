@@ -1,6 +1,6 @@
 import React from 'react'
-import Logo from '@/components/header/Logo'
-import Navbar from '@/components/header/Navbar'
+import Logo from '../header/Logo'
+import Navbar from '../header/Navbar'
 
 function Header({page}) {
   return (
