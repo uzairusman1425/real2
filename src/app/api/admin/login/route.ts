@@ -4,7 +4,7 @@ import User from "../../../../models/Usermodel.js";
 import bcrypt from 'bcrypt';
 import { NextResponse } from "next/server";
 import jwt from 'jsonwebtoken'
-export async function POST(req: NextApiRequest) {
+export async function POST(req: any) {
     connect()
     try {
         const reqBody = await req.json()

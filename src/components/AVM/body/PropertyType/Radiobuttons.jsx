@@ -1,12 +1,33 @@
 import React from 'react'
 
 function Radiobuttons({SetFieldText,setDivClicked}) {
+
+    const propertyvalues = ['Apartment','House','Land']
+
   return (
     <div className='self-center'>
 
         <form action="">
+            
+            {
+                propertyvalues.map((item,index)=>{
+                    console.log(item)
+                    return(
+                        <>
+                            <input key={index} type="radio" name={item} id={item} className='mb-3 mx-1' onClick={()=>{
+                                SetFieldText(item)
+                                
+                                setDivClicked(false)
+                            }}/>
+                            <label htmlFor={item} key={index} className='mx-1'>
+                                {item}
+                            </label>
+                        </>
+                    )
+                })
+            }
 
-            <input type="radio" name="apt" id="apt" className='mb-3 mr-3' onClick={()=>{
+            {/* <input type="radio" name="apt" id="apt" className='mb-3 mr-3' onClick={()=>{
                 SetFieldText('Apartment')
                 setDivClicked(false)
             }}/>
@@ -26,7 +47,8 @@ function Radiobuttons({SetFieldText,setDivClicked}) {
             }}/>
             <label htmlFor="land">
                 Land
-            </label>
+            </label> */}
+
         </form>
     </div>
   )

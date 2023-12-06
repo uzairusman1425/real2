@@ -9,7 +9,7 @@ function Modalproperty({SetFieldText,setDivClicked}) {
   return (
     <>
     <div className='relative'>
-        <div className='absolute bg-white drop-shadow-xl w-[21rem] h-auto flex flex-col z-20'>
+        <div className='absolute bg-white drop-shadow-xl min-w-[21rem] w-auto  h-auto flex flex-col z-20'>
             <p className='text-xs m-3 font-bold'>PROPERTY TYPE</p>
 
             <div className='self-center'>
