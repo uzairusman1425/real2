@@ -7,37 +7,51 @@ import { useState,useEffect } from 'react';
 import PropertyType from '../../AVM/body/PropertyType/PropertyType';
 import axios from 'axios'
 
+
 function Selection() {
     const [selected, setSelected] = useState("");
-    const [countrylist,setCountrylist] = useState(["CY","AB","DZ","CY"]) 
-
+    const [countrylist,setCountrylist] = useState(["CY","AB","DZ","CY"])
+    const cityWithCountry = []
+    const tempCountryArray = [];
+    let newCountryArray = [];
     const pushIntoArray = (item) => {
       // console.log(item);
       
-        const newArray = [...countrylist, item];
-        setCountrylist(newArray);
+        const newCountryArray = [...countrylist, item];
+        // console.log(newCountryArray);
+        setCountrylist(newCountryArray);
       
     };
-
 
     useEffect(() => {
       const getResponse = async () =>{
 
-        const response = await axios.get(`http://localhost:3000/api/admin/country`);
-        // console.log(`check ${process.env.API_URL}`);
-        // console.log(response.data.data);
-        await response?.data?.data?.map( (item,index)=>{
-          if(item.country){
-            // console.log(item.country);
-             pushIntoArray(item.country)
-            // console.log(item.country)
-          };
+        const response = await axios.get(`http://localhost:3000/api/admin/country`).then(function (response){
+          // console.log(response.data.data)
+          response.data.data.map((item)=>{
+            // console.log(item)
+            cityWithCountry.push({country:item.country,cities:item.cities})
+            if(item.country){
+              
+              tempCountryArray.push(item.country)
+            }
+          })
+          // console.log(tempCountryArray);
+          newCountryArray=[...countrylist,...tempCountryArray]
+          setCountrylist(newCountryArray)
         })
-
-        console.log(countrylist);
+        
+        console.log(cityWithCountry);
       }
       getResponse();
     }, [])
+
+    useEffect(()=>{
+      console.log(cityWithCountry);
+      cityWithCountry.map((item)=>{
+        // console.log(item)
+      })
+    },[selected])
     
 
   return (
@@ -54,13 +68,20 @@ function Selection() {
               searchPlaceholder="Search countries"
               countries={countrylist}
               className='w-72 text-xs '
+              
             />
             <select name="" id="cities" className='w-[20rem] border-gray-300 border-[1px] rounded-md h-9'>
             <option value="-" defaultValue={null} className='text-white'>Cities</option>
-              {City?.getCitiesOfCountry(selected)?.map((item,index)=>{
+              {
+                cityWithCountry.filter((item) => (item.country===selected)).map((item,index)=>{
+                  {/* console.log(item.cities) */}
+                })
+              }
+              
+              {/* {City?.getCitiesOfCountry(selected)?.map((item,index)=>{
                 return <option value={item.name} key={index}>{item.name}</option>
                   
-              })}
+              })} */}
             </select>
             <PropertyType/>
 

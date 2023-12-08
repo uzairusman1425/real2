@@ -6,7 +6,7 @@ export async function POST(req: any) {
     connect()
     try {
         const reqBody = await req.json()
-        const { country, city, property } = reqBody
+        const { country, cities, properties } = reqBody
         console.log("req body", country);
         const isCountry = await Country.findOne({ country })
         console.log(isCountry);
@@ -15,8 +15,8 @@ export async function POST(req: any) {
         // }
         const newcountry = new Country({
             country,
-            city,
-            property
+            cities,
+            properties
         })
         const save = await newcountry.save()
         return NextResponse.json({ success: true, Data: save });

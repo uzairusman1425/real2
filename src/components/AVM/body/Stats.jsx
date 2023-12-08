@@ -1,5 +1,6 @@
 
-import * as React from 'react';
+import { useEffect,useState,useMemo } from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
@@ -14,6 +15,7 @@ import { visuallyHidden } from '@mui/utils';
 import { SvgIcon } from '@mui/material';
 import ShowChartOutlinedIcon from '@mui/icons-material/ShowChartOutlined';
 import Recharts from './Recharts';
+
 
 function createData(id, city, avgprice, troughcurrent, peakcurrent, last12,last3,lastmonth,yearonyear) {
     return {
@@ -30,13 +32,9 @@ function createData(id, city, avgprice, troughcurrent, peakcurrent, last12,last3
     };
   }
   
-  const rows = [
-    createData(1, 'Kaimakli', 596, 0, 0, 0,0,0,0),
-    createData(2, 'Agioi Omologites', 1041, -12.2, 8.4, 0,-2.1,0,0),
-    createData(3, 'Agios Andreas', 1141, -11.6, 0, 0,0,0,0),
-    createData(4, 'Strovolos', 1725, -9, 8.6, 0.7,3.1,0.7,0),
-    createData(5, 'Aglantzia', 1825, -0.6, 6, 0,0,0,0),
-  ];
+  
+
+  
   
   function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -181,11 +179,41 @@ function createData(id, city, avgprice, troughcurrent, peakcurrent, last12,last3
 
 function Stats() {
 
-    const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('avgprice');
-  const [selected, setSelected] = React.useState([]);
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(500);
+    const [order, setOrder] = useState('asc');
+  const [orderBy, setOrderBy] = useState('avgprice');
+  const [selected, setSelected] = useState([]);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(500);
+  const [rows,setRows] = useState([])
+  const temprows=[]
+
+  const pushIntoRows = (item)=>{
+    const arr=rows
+    arr.push(item)
+    setRows(arr)
+  }
+
+  useEffect(() => {
+    const getApi = async () =>{
+      await axios.get('http://localhost:3000/api/admin/table').then((response) =>{
+        // console.log(response.data.data);
+        response.data.data.map((item,index)=>{
+          // console.log(index+item.cityName+item.averagePrice+item.troughCurrent+item.peakCurrent+item.last12Month+item.last3Month+item.lastMonth +item.yearOnYear);
+          temprows.push(createData(index+1,item.cityName,item.averagePrice,item.troughCurrent,item.peakCurrent,item.last12Month,item.last3Month,item.lastMonth,item.yearOnYear))
+          // pushIntoRows(createData(index+1,item.cityName,item.averagePrice,item.troughCurrent,item.peakCurrent,item.last12Month,item.last3Month,item.lastMonth,item.yearOnYear))
+          
+          // console.log(rows);
+        })
+        setRows(temprows);
+      })
+    }
+    
+    getApi();
+    
+  
+  }, [])
+
+
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -211,7 +239,7 @@ function Stats() {
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
-  const visibleRows = React.useMemo(
+  const visibleRows = useMemo(
     () =>
       stableSort(rows, getComparator(order, orderBy)).slice(
         page * rowsPerPage,
@@ -219,7 +247,10 @@ function Stats() {
       ),
     [order, orderBy, page, rowsPerPage],
   );
-
+  
+  
+  
+  
   return (
     <>
     <div className='bg-white'>
@@ -241,9 +272,9 @@ function Stats() {
                 rowCount={rows.length}
                 />
                 <TableBody>
-                {visibleRows.map((row, index) => {
+                {rows.map((row, index) => {
                     const labelId = `enhanced-table-checkbox-${index}`;
-
+                    {/* console.log(row.yearonyear); */}
                     return (
                     <TableRow key={index}>
                         
@@ -275,7 +306,7 @@ function Stats() {
                         <TableCell className='font-medium border-l-2 border-r-2 '  align="left">{row.last12}%</TableCell>
                         <TableCell className='font-medium border-l-2 border-r-2 '  align="left">{row.last3}%</TableCell>
                         <TableCell className='font-medium border-l-2 border-r-2 '  align="left">{row.lastmonth}%</TableCell>
-                        <TableCell className='font-medium border-l-2 border-r-2 py-1'  align="left"><Recharts/></TableCell>
+                        <TableCell className='font-medium border-l-2 border-r-2 py-1'  align="left"><Recharts values={row.yearonyear}/></TableCell>
                     </TableRow>
                     );
                 })}
@@ -295,7 +326,7 @@ function Stats() {
                         <TableCell className='font-medium border-l-2 border-r-2 bg-[#e9f5fe]' align="left">-0.3%</TableCell>
                         <TableCell className='font-medium border-l-2 border-r-2 bg-[#e9f5fe]' align="left">0%</TableCell>
                         <TableCell className='font-medium border-l-2 border-r-2 bg-[#e9f5fe]' align="left">-0.7%</TableCell>
-                        <TableCell className='font-medium border-l-2 border-r-2 bg-[#e9f5fe] py-1' align="left"><Recharts/></TableCell>
+                        <TableCell className='font-medium border-l-2 border-r-2 bg-[#e9f5fe] py-1' align="left"><Recharts values={[4,3,6,-5,23,-5,43,-66,34,2,-22,12]}/></TableCell>
                     </TableRow>
                 {emptyRows > 0 && (
                     <TableRow

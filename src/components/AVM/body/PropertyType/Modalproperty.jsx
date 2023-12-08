@@ -25,7 +25,12 @@ function Modalproperty({SetFieldText,setDivClicked}) {
 
             {buttonType==='residential' && <Radiobuttons setDivClicked={setDivClicked} SetFieldText={SetFieldText} />}
             
-        </div> 
+        </div>
+    </div>
+    <div className='static'>
+    <div className='absolute w-screen h-screen top-0 left-0  z-10 ' onClick={()=>{setDivClicked(false)}}>
+        
+    </div>
     </div>
     
    

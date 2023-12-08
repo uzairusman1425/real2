@@ -42,23 +42,23 @@ export const options = {
   },
 };
 
-const labels = [1,2,3,4,5,6,7,8,9,10,11,12];
-const dataset1 = [25,50,-4,6,8,34,-50,3,34,32,-10,-24]
 
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: '',
-      data: dataset1,
-      backgroundColor: dataset1?.map((_, index) => (dataset1[index] >= 0 ? 'green' : 'red')),
-  },
-    
-  ],
-};
-
-function Recharts() {
-    
+function Recharts({values}) {
+  const labels = [1,2,3,4,5,6,7,8,9,10,11,12];
+  const dataset1 = values
+  
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: '',
+        data: dataset1,
+        backgroundColor: dataset1?.map((_, index) => (dataset1[index] >= 0 ? 'green' : 'red')),
+    },
+      
+    ],
+  };
+    // console.log(values);
   return (
   <div className='m-0 p-0 w-28'>
     <Bar options={options} data={data} />
