@@ -195,7 +195,7 @@ function Stats() {
 
   useEffect(() => {
     const getApi = async () =>{
-      await axios.get('http://localhost:3000/api/admin/table').then((response) =>{
+      await axios.get('api/admin/table').then((response) =>{
         // console.log(response.data.data);
         response.data.data.map((item,index)=>{
           // console.log(index+item.cityName+item.averagePrice+item.troughCurrent+item.peakCurrent+item.last12Month+item.last3Month+item.lastMonth +item.yearOnYear);

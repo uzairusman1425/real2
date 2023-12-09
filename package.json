@@ -29,6 +29,7 @@
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18",
     "react-flags-select": "^2.2.3",
+    "react-hot-toast": "^2.4.1",
     "recharts": "^2.10.1"
   },
   "devDependencies": {
