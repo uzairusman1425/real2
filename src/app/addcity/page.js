@@ -12,6 +12,7 @@ function Page() {
   const [last3,setLast3]=useState()
   const [lastm,setLastM]=useState()
   const [yearOnYear,setYearOnYear]=useState([])
+  const [deleteRow,setDeleteRow] = useState('')
   
   const handlePostRequest = async () => {
     const postData = {
@@ -24,7 +25,7 @@ function Page() {
       lastMonth: lastm,
       yearOnYear: yearOnYear
     };
-    console.log(postData);
+    // console.log(postData);
     try {
       const response = await axios.post('http://localhost:3000/api/admin/table', postData);
       
@@ -43,10 +44,24 @@ function Page() {
       console.error('Error:', error);
     }
   };
+
+  const handleDeleteRequest = async () => {
+    
+    const postData = {
+      "cityName": "Karachi"
+    };
+    try {
+      console.log(postData);
+      const response = await axios.delete('api/admin/table', postData);
+      
+      setDeleteRow('')
+      console.log(response);
+    } catch (error) {
+      // Handle errors
+      console.error('Error:', error.message);
+    }
+  };
   
-  useEffect(()=>{
-    console.log(yearOnYear[0]);
-  },[yearOnYear])
 
   const setIndexYearOnYear = (item,index) =>{
     let arr=yearOnYear;
@@ -83,39 +98,17 @@ function Page() {
             <input type="text" value={yearOnYear[11]} onChange={(e)=>{setIndexYearOnYear(e.target.value,11)}} name="yearonyear12" id="yearonyear12" className='m-2 p-4 rounded-lg w-[40%]' placeholder='Month 12'/>
             <input type="button" value="Submit" onClick={handlePostRequest} className='bg-white w-52 h-20 rounded-2xl m-2 p-4 cursor-pointer hover:bg-gray-500 hover:text-white text-xl font-semibold' />
         </form>
+
+        <h1 className='w-full text-white text-center text-3xl m-10 font-semibold'>Delete a row</h1>
+        <form action="" className='flex justify-center items-center'>
+
+          <input type="text" value={deleteRow} onChange={(e)=>{setDeleteRow(e.target.value);}} name="deleterow" id="deleterow" className='m-2 p-4 self-center rounded-lg w-[55%]' placeholder='Enter City Name to delete'/>
+          <input type="button" value="Submit" onClick={handleDeleteRequest} className='bg-white w-52 h-20 rounded-2xl m-2 p-4 cursor-pointer hover:bg-gray-500 hover:text-white text-xl font-semibold' />
+        </form>
+        
     </div>
   )
 }
 
-// ()=>{
-//   const checkLogin = async () => {
-//   await axios.post('http://localhost:3000/api/admin/table',{
-//   method: 'POST',
-//   headers: {
-//       'Content-Type': 'application/json',
-//   },
-//   body: JSON.stringify({city,
-//     averagePrice,
-//     troughcurrent,
-//     peakCurrent,
-//     last12,
-//     last3,
-//     lastm,
-//     yearOnYear})
-//   }).then( async response => {
-//     const reply= await response.json()
-//     console.log(reply)
-//   }).catch(err=>(console.log(err)))
-
-  
-//   // console.log(city)
-//   // console.log(averagePrice)
-//   // console.log(troughcurrent)
-//   // console.log(peakCurrent)
-//   // console.log(last12)
-//   // console.log(last3)
-//   // console.log(lastm)
-//   // console.log(yearOnYear)
-// }}
 
 export default Page

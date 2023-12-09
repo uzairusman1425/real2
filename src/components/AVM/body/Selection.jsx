@@ -8,10 +8,12 @@ import PropertyType from '../../AVM/body/PropertyType/PropertyType';
 import axios from 'axios'
 
 
+
 function Selection() {
     const [selected, setSelected] = useState("");
     const [countrylist,setCountrylist] = useState(["CY","AB","DZ","CY"])
-    const cityWithCountry = []
+    const [cityWithCountry,setCityWithCountry] = useState([]) 
+    const [cities,setCities] = useState([])
     const tempCountryArray = [];
     let newCountryArray = [];
     const pushIntoArray = (item) => {
@@ -23,14 +25,24 @@ function Selection() {
       
     };
 
+    function removeDuplicates(arr) {  
+    let unique = arr.reduce((acc, curr)=> {
+          if (!acc.includes(curr))
+              acc.push(curr);
+          return acc;
+      }, []);
+      return unique;
+  }
+
     useEffect(() => {
       const getResponse = async () =>{
 
-        const response = await axios.get(`http://localhost:3000/api/admin/country`).then(function (response){
+        const response = await axios.get(`api/admin/country`).then(function (response){
           // console.log(response.data.data)
           response.data.data.map((item)=>{
             // console.log(item)
-            cityWithCountry.push({country:item.country,cities:item.cities})
+            // cityWithCountry.push({country:item.country,cities:item.cities})
+            setCityWithCountry(current => [...current, {country:item.country,cities:item.cities}])
             if(item.country){
               
               tempCountryArray.push(item.country)
@@ -41,16 +53,22 @@ function Selection() {
           setCountrylist(newCountryArray)
         })
         
-        console.log(cityWithCountry);
+        // console.log(cityWithCountry);
       }
       getResponse();
     }, [])
 
     useEffect(()=>{
-      console.log(cityWithCountry);
-      cityWithCountry.map((item)=>{
-        // console.log(item)
+      // console.log(cityWithCountry);
+      setCities([])
+      cityWithCountry.filter((item) => (item.country===selected)).map((item)=>{
+        item.cities.map((item)=>{
+          // console.log(item.name);
+          setCities(current => [...current, item.name])
+          // console.log(removeDuplicates());
+        })
       })
+      // console.log();
     },[selected])
     
 
@@ -73,8 +91,8 @@ function Selection() {
             <select name="" id="cities" className='w-[20rem] border-gray-300 border-[1px] rounded-md h-9'>
             <option value="-" defaultValue={null} className='text-white'>Cities</option>
               {
-                cityWithCountry.filter((item) => (item.country===selected)).map((item,index)=>{
-                  {/* console.log(item.cities) */}
+                removeDuplicates(cities).map((item,index) => {
+                  return <option value={item} key={index}>{item}</option>
                 })
               }
               
