@@ -1,6 +1,7 @@
 "use client"
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
+import toast, { Toaster } from 'react-hot-toast';
 
 
 const Page = () => {
@@ -22,10 +23,14 @@ const Page = () => {
 
         if (response.ok) {
             localStorage.setItem("session", "session")
-            router.push('/addcity')
-            alert(`${reply.message}`)
+            setTimeout(() => {
+                router.push('/admin/addcity')
+            }, 3000);
+            // alert(`${reply.message}`)
+            toast.success(`${reply.message}`)
         } else {
-            alert(`${reply.error}`)
+            toast.error(`${reply.error}`)
+            // alert(`${reply.error}`)
         }
     }
    
@@ -35,6 +40,7 @@ const Page = () => {
     }
     return (
         <div className='flex flex-row justify-center items-center'>
+            <Toaster/>
             <form className='flex flex-col justify-center items-center mt-40' onSubmit={Check}>
                 <input
                     className='mb-5 px-4 py-2 text-lg text-gray-700 border-2 border-gray-300 rounded-md focus:outline-none focus:border-blue-500'

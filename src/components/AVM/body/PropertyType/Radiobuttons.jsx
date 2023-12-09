@@ -9,7 +9,7 @@ function Radiobuttons({SetFieldText,setDivClicked}) {
 
         <form action="">
             
-            {
+            {/* {
                 propertyvalues.map((item,index)=>{
                     console.log(item)
                     return(
@@ -25,9 +25,9 @@ function Radiobuttons({SetFieldText,setDivClicked}) {
                         </>
                     )
                 })
-            }
+            } */}
 
-            {/* <input type="radio" name="apt" id="apt" className='mb-3 mr-3' onClick={()=>{
+            <input type="radio" name="apt" id="apt" className='mb-3 mr-3' onClick={()=>{
                 SetFieldText('Apartment')
                 setDivClicked(false)
             }}/>
@@ -47,7 +47,7 @@ function Radiobuttons({SetFieldText,setDivClicked}) {
             }}/>
             <label htmlFor="land">
                 Land
-            </label> */}
+            </label>
 
         </form>
     </div>

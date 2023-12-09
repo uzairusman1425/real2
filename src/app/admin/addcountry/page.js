@@ -1,12 +1,13 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import PropertyType from '../../components/admin/PropertyType/PropertyType';
+import PropertyType from '../../../components/admin/PropertyType/PropertyType';
 
-import Navbar from '../../components/admin/PropertyType/Navbar'
+import Navbar from '../../../components/admin/PropertyType/Navbar'
 import ReactFlagsSelect from "react-flags-select";
 import {  City }  from 'country-state-city';
-import MultipleSelectCheckmarks from '../../components/AVM/body/MultipleSelectCheckmarks'
+import MultipleSelectCheckmarks from '../../../components/AVM/body/MultipleSelectCheckmarks'
 import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
 
 function Page() {
   const [selected, setSelected] = useState("");
@@ -24,11 +25,13 @@ function Page() {
     console.log(postData);
     try {
 
-     const response  =  await axios.post('api/admin/country', postData);
+     const response  =  await axios.post('../api/admin/country', postData);
 
+     toast.success("Country and cities added")
   //  console.log("response" , response.data);
     } catch (error) {
       // Handle errors
+      toast.error("Could not add")
       console.error('Error:', error);
     }
   };
@@ -49,7 +52,7 @@ function Page() {
 
   return (
       <>
-
+        <Toaster/>
         <Navbar page={'addcountry'}/>
         <div className='w-screen  bg-[#38373c] flex justify-center'>
           

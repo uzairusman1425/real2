@@ -1,7 +1,8 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import Navbar from '../../components/admin/PropertyType/Navbar'
+import Navbar from '../../../components/admin/PropertyType/Navbar'
 import axios from 'axios'
+import toast, { Toaster } from 'react-hot-toast'
 
 function Page() {
   const [city,setCity]=useState()
@@ -27,7 +28,7 @@ function Page() {
     };
     // console.log(postData);
     try {
-      const response = await axios.post('http://localhost:3000/api/admin/table', postData);
+      const response = await axios.post('../api/admin/table', postData);
       
       setCity('')
       setaveragePrice('')
@@ -39,9 +40,11 @@ function Page() {
       yearOnYear.map((_,index)=>{
         // console.log(`what was deleted? ${_} on index ${index}`);
         setIndexYearOnYear('',index)})
+        toast.success("Row added")
     } catch (error) {
       // Handle errors
       console.error('Error:', error);
+      toast.error("Could not add")
     }
   };
 
@@ -58,6 +61,7 @@ function Page() {
       console.log(response);
     } catch (error) {
       // Handle errors
+      toast.error("Could not delete")
       console.error('Error:', error.message);
     }
   };
@@ -70,6 +74,7 @@ function Page() {
   }
   return (
     <div className=''>
+    <Toaster/>
     <Navbar page={'addcity'} />
         <div>
             <h1 className='text-center text-4xl font-bold text-white my-10'>Add a City</h1>
