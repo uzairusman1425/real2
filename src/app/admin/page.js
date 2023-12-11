@@ -25,7 +25,7 @@ const Page = () => {
             localStorage.setItem("session", "session")
             setTimeout(() => {
                 router.push('/admin/addcity')
-            }, 3000);
+            }, 1000);
             // alert(`${reply.message}`)
             toast.success(`${reply.message}`)
         } else {

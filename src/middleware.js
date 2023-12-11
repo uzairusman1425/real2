@@ -13,6 +13,13 @@ export function middleware(request) {
         // console.log("In IF");
         return NextResponse.redirect(new URL('/admin',request.nextUrl))
     }
+
+    if(!isPrivate && token)
+    {
+        // console.log("In IF");
+        return NextResponse.redirect(new URL('/admin/addcity',request.nextUrl))
+    }
+
 }
  
 // See "Matching Paths" below to learn more

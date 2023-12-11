@@ -307,7 +307,7 @@ function Stats() {
                         component="th"
                         scope="row"
                         padding="none"
-                        className='bg-[#e9f5fe] font-semibold pl-2  border-l-2'
+                        className='bg-[#e9f5fe] font-semibold pl-6 border-l-2'
                         >
                           Famagusta
                         </TableCell>
