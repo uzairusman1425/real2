@@ -185,39 +185,30 @@ function Stats() {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(500);
   const [rows,setRows] = useState([])
-  const temprows=[]
-
-  const pushIntoRows = (item)=>{
-    const arr=rows
-    arr.push(item)
-    setRows(arr)
-  }
 
   useEffect(() => {
     const getApi = async () =>{
       await axios.get('api/admin/table').then((response) =>{
         // console.log(response.data.data);
         response.data.data.map((item,index)=>{
-          // console.log(index+item.cityName+item.averagePrice+item.troughCurrent+item.peakCurrent+item.last12Month+item.last3Month+item.lastMonth +item.yearOnYear);
-          temprows.push(createData(index+1,item.cityName,item.averagePrice,item.troughCurrent,item.peakCurrent,item.last12Month,item.last3Month,item.lastMonth,item.yearOnYear))
-          // pushIntoRows(createData(index+1,item.cityName,item.averagePrice,item.troughCurrent,item.peakCurrent,item.last12Month,item.last3Month,item.lastMonth,item.yearOnYear))
-          
-          // console.log(rows);
+          setRows(current => [...current,createData(index+1,item.cityName,item.averagePrice,item.troughCurrent,item.peakCurrent,item.last12Month,item.last3Month,item.lastMonth,item.yearOnYear)])
         })
-        setRows(temprows);
-      })
+        setTimeout(() => {
+          console.log("Check");
+          setOrder("asc")
+          setOrderBy("city")
+        }, 3000);
+       })
     }
     
     getApi();
-    
-  
   }, [])
-
-
-
+    
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
+    console.log(order);
+    console.log(property);
     setOrderBy(property);
   };
 
@@ -272,7 +263,7 @@ function Stats() {
                 rowCount={rows.length}
                 />
                 <TableBody>
-                {rows.map((row, index) => {
+                {visibleRows.map((row, index) => {
                     const labelId = `enhanced-table-checkbox-${index}`;
                     {/* console.log(row.yearonyear); */}
                     return (
