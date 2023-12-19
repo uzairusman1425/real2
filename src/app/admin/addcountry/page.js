@@ -28,6 +28,7 @@ function Page() {
      const response  =  await axios.post('../api/admin/country', postData);
 
      toast.success("Country and cities added")
+     location.reload();
   //  console.log("response" , response.data);
     } catch (error) {
       // Handle errors

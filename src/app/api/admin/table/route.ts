@@ -61,17 +61,3 @@ export async function GET() {
 }
 
 
-export async function DELETE(req: any) {
-    connect()
-    try {
-        const reqBody = await req.json()
-        const { cityName } = reqBody
-        const iscity = await TableData.findOneAndDelete({ cityName })
-        if (!iscity) {
-            return NextResponse.json({ error: " city not found" }, { status: 400 })
-        }
-        return NextResponse.json({ success: true, message: " record deleted", data: iscity }, { status: 200 })
-    } catch (error) {
-        return NextResponse.json({ error: error.message }, { status: 500 })
-    }
-}

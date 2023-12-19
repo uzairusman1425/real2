@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../../../components/admin/PropertyType/Navbar'
 import axios from 'axios'
 import toast, { Toaster } from 'react-hot-toast'
+import TableComp from '../../../components/admin/city/TableComp'
 
 function Page() {
   const [city,setCity]=useState()
@@ -41,6 +42,10 @@ function Page() {
         // console.log(`what was deleted? ${_} on index ${index}`);
         setIndexYearOnYear('',index)})
         toast.success("Row added")
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
+        
     } catch (error) {
       // Handle errors
       console.error('Error:', error);
@@ -48,17 +53,25 @@ function Page() {
     }
   };
 
-  const handleDeleteRequest = async () => {
+  const handleDeleteRequest = async (cityname) => {
     
     const postData = {
-      "cityName": "Karachi"
+      "cityName":   deleteRow
     };
     try {
-      console.log(postData);
-      const response = await axios.delete('api/admin/table', postData);
       
+      console.log(deleteRow);
+      
+      // const url = `${process.env.API_URL}/api/admin/table/Karachi`
+      const url = `http://localhost:3000/api/admin/table/${cityname}`
+      console.log(url);
+      const response = await axios.delete(url);
+      toast.success("Row deleted")
       setDeleteRow('')
-      console.log(response);
+      setTimeout(() => {
+        location.reload();
+      }, 1000);
+      console.log(response.data);
     } catch (error) {
       // Handle errors
       toast.error("Could not delete")
@@ -104,12 +117,12 @@ function Page() {
             <input type="button" value="Submit" onClick={handlePostRequest} className='bg-white w-52 h-20 rounded-2xl m-2 p-4 cursor-pointer hover:bg-gray-500 hover:text-white text-xl font-semibold' />
         </form>
 
-        <h1 className='w-full text-white text-center text-3xl m-10 font-semibold'>Delete a row</h1>
-        <form action="" className='flex justify-center items-center'>
+        <h1 className='w-full text-white text-center text-3xl mt-20 font-semibold'>Delete a row</h1>
+          
 
-          <input type="text" value={deleteRow} onChange={(e)=>{setDeleteRow(e.target.value);}} name="deleterow" id="deleterow" className='m-2 p-4 self-center rounded-lg w-[55%]' placeholder='Enter City Name to delete'/>
-          <input type="button" value="Submit" onClick={handleDeleteRequest} className='bg-white w-52 h-20 rounded-2xl m-2 p-4 cursor-pointer hover:bg-gray-500 hover:text-white text-xl font-semibold' />
-        </form>
+          <TableComp handleDeleteRequest={handleDeleteRequest}/>
+          {/* <input type="button" value="Submit" onClick={handleDeleteRequest} className='bg-white w-52 h-20 rounded-2xl m-2 p-4 cursor-pointer hover:bg-gray-500 hover:text-white text-xl font-semibold' /> */}
+        
         
     </div>
   )

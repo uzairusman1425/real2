@@ -30,6 +30,7 @@
     "react-dom": "^18",
     "react-flags-select": "^2.2.3",
     "react-hot-toast": "^2.4.1",
+    "react-player": "^2.14.0",
     "recharts": "^2.10.1"
   },
   "devDependencies": {
