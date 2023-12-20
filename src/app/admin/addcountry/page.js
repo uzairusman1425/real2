@@ -6,7 +6,7 @@ import { City } from 'country-state-city';
 import MultipleSelectCheckmarks from '../../../components/AVM/body/MultipleSelectCheckmarks'
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
-
+import CityTable from '../../../components/admin/CityTable'
 
 function Page() {
   const [selected, setSelected] = useState("");
@@ -81,7 +81,7 @@ function Page() {
 
         </div>
       </div>
-
+      <CityTable />
     </>
   )
 }

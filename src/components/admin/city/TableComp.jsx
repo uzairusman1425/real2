@@ -184,7 +184,7 @@ function TableComp({ handleDeleteRequest }) {
 
   useEffect(() => {
     const getApi = async () => {
-      await axios.get('http://localhost:3000/api/admin/table').then((response) => {
+      await axios.get('/api/admin/table').then((response) => {
 
         response.data.data.map((item, index) => {
           setRows(response?.data?.data)

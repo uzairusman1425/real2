@@ -99,6 +99,7 @@ function Page() {
       for (let a of data) {
         a.cities.forEach(city => {
           uniqueCity.add(city)
+
         });
 
       }
@@ -108,9 +109,8 @@ function Page() {
     getResponse();
   }, [])
 
-  console.log(cities);
 
-  console.log(ParentCity);
+
   const setIndexYearOnYear = (item, index) => {
     let arr = yearOnYear;
     arr[index] = item
