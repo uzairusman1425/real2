@@ -42,11 +42,11 @@ const CityTable = () => {
                     {
                         countrylist.map((item, index) => {
                             return (
-                                <tr>
+                                <tr key={index}>
                                     <td className='flex flex-col mr-10'>
                                         <div className='flex flex-col ml-10'>
                                             <ReactCountryFlag
-                                                key={index}
+
                                                 className="emojiFlag"
                                                 countryCode={item}
                                                 style={{
