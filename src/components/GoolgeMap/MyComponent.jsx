@@ -17,6 +17,9 @@ function HeatmapLayer() {
         // Example heatmap data
         const data = [
             new window.google.maps.LatLng(35.1856, 33.3823),
+            new window.google.maps.LatLng(35.1860, 33.3827),
+            new window.google.maps.LatLng(35.1864, 33.3831),
+            new window.google.maps.LatLng(35.1868, 33.3835),
             // Add more LatLng objects for heatmap data...
         ];
         const heatmap = new window.google.maps.visualization.HeatmapLayer({
