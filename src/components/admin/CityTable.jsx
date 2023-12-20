@@ -5,6 +5,7 @@ import ReactFlagsSelect from "react-flags-select";
 const CityTable = () => {
 
     const [countrylist, setCountrylist] = useState([])
+    const [name, setName] = useState()
 
     useEffect(() => {
         const getData = async () => {
@@ -23,12 +24,16 @@ const CityTable = () => {
         getData();
     }, []);
 
-    console.log(countrylist);
+    const handledelete = async () => {
+
+        const response = await axios.delete(`http://localhost:3000/api/admin/country/${name}`)
+        console.log(response);
+    }
 
     return (
         <>
 
-            <table class="table-auto">
+            <table className="table-auto">
                 <thead>
                     <tr>
                         <th>Song</th>
@@ -58,7 +63,10 @@ const CityTable = () => {
                                         </div>
                                     </td>
                                     <td className=' ml-5'>
-                                        <button className='bg-red-500 w-[100px] h-[40px] rounded-lg text-white'>DELETE</button>
+                                        <button onClick={() => {
+                                            setName(item),
+                                                handledelete()
+                                        }} className='bg-red-500 w-[100px] h-[40px] rounded-lg text-white'>DELETE</button>
                                     </td>
                                 </tr>
                             )
