@@ -9,6 +9,17 @@ const center = {
     lng: 33.3823
 
 };
+
+const gradient = [
+    'rgba(0, 255, 255, 0)',
+    'rgb(147,112,219)',
+    'rgb(124,252,0)',
+    'rgb(255,255,0)',
+    'rgb(255,99,71)',
+    'rgb(255,69,0)'
+
+];
+
 // Custom component to add a heatmap layer
 function HeatmapLayer() {
     const map = useGoogleMap();
@@ -24,7 +35,9 @@ function HeatmapLayer() {
         ];
         const heatmap = new window.google.maps.visualization.HeatmapLayer({
             data: data,
-            map: map
+            map: map,
+            radius: 60,
+            gradient: gradient
         });
         return () => {
             heatmap.setMap(null);
@@ -42,7 +55,7 @@ function MyComponent() {
         <GoogleMap
             mapContainerStyle={containerStyle}
             center={center}
-            zoom={7}
+            zoom={18}
         >
             <HeatmapLayer />
         </GoogleMap>
