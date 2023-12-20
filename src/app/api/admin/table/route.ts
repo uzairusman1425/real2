@@ -1,7 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import connect from "../../../../db/connect";
 import TableData from "../../../../models/TableModel"
+
 import { NextResponse } from "next/server";
+
 
 export async function POST(req: any) {
 
@@ -10,13 +12,17 @@ export async function POST(req: any) {
     try {
 
         const reqBody = await req.json()
-        const { cityName, averagePrice, troughCurrent, peakCurrent, last12Month, last3Month, lastMonth, yearOnYear } = reqBody
+        const { ParentCity, cityName, averagePrice, troughCurrent, peakCurrent, last12Month, last3Month, lastMonth, yearOnYear } = reqBody
 
         const iscity = await TableData.findOne({ cityName })
+
+
         if (iscity) {
             return NextResponse.json({ error: "city name exist already " }, { status: 400 })
         }
+
         const saveData = new TableData({
+            ParentCity,
             cityName,
             averagePrice,
             troughCurrent,

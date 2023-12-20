@@ -1,6 +1,13 @@
-import mongoose from "mongoose";
+import mongoose, { Types } from "mongoose";
 
 const tableSchema = new mongoose.Schema({
+
+    ParentCity: {
+        type: String,
+        ref: "Country",
+        required: true
+    },
+
     cityName: {
         type: String,
         required: true
