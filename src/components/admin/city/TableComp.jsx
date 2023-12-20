@@ -265,51 +265,51 @@ function TableComp({ handleDeleteRequest }) {
                       {/* console.log(row.yearonyear); */ }
                       return (
 
-                        row.ParentCity === "AF" && (
-                          <TableRow key={index}>
 
-                            <TableCell
-                              component="th"
-                              id={labelId}
-                              scope="row"
-                              padding="none"
-                              className=' border-l-2'
-                            >
+                        <TableRow key={index}>
 
-                              <a href="" className='font-semibold '>
-                                <div className='flex items-center'>
-                                  <div className='flex items-center hover:text-blue-900 text-[#177bff] hover:underline'>
-                                    <SvgIcon component={ShowChartOutlinedIcon} sx={{
-                                      color: 'blue', '&:hover': {
-                                        color: 'rgb(30, 58, 138)',
-                                      }
-                                    }} className='ml-1 mr-3 flex-grow-0' />
-                                    {row.cityName}
-                                  </div>
+                          <TableCell
+                            component="th"
+                            id={labelId}
+                            scope="row"
+                            padding="none"
+                            className=' border-l-2'
+                          >
+
+                            <a href="" className='font-semibold '>
+                              <div className='flex items-center'>
+                                <div className='flex items-center hover:text-blue-900 text-[#177bff] hover:underline'>
+                                  <SvgIcon component={ShowChartOutlinedIcon} sx={{
+                                    color: 'blue', '&:hover': {
+                                      color: 'rgb(30, 58, 138)',
+                                    }
+                                  }} className='ml-1 mr-3 flex-grow-0' />
+                                  {row.cityName}
                                 </div>
-                              </a>
+                              </div>
+                            </a>
 
 
-                            </TableCell>
-                            <TableCell className='font-medium border-l-2 border-r-2 ' align="left">€ {row.averagePrice}</TableCell>
-                            { }
-                            <TableCell className='font-medium border-l-2 border-r-2 ' align="left">{row.troughCurrent}%</TableCell>
-                            <TableCell className='font-medium border-l-2 border-r-2 ' align="left">{row.peakCurrent
-                            }%</TableCell>
-                            <TableCell className='font-medium border-l-2 border-r-2 ' align="left">{row.last12Month}%</TableCell>
-                            <TableCell className='font-medium border-l-2 border-r-2 ' align="left">{row.last3Month
-                            }%</TableCell>
-                            <TableCell className='font-medium border-l-2 border-r-2 ' align="left">{row.lastMonth}%</TableCell>
-                            <TableCell className='font-medium border-l-2 border-r-2 py-1' align="left">
-                              <button onClick={() => { handleDeleteRequest(row.cityName) }} className=' border-cyan-300 bg-yellow-500 w-[100px] h-[30px] rounded-lg hover:bg-yellow-300 mb-2'>UPDATE</button>
+                          </TableCell>
+                          <TableCell className='font-medium border-l-2 border-r-2 ' align="left">€ {row.averagePrice}</TableCell>
+                          { }
+                          <TableCell className='font-medium border-l-2 border-r-2 ' align="left">{row.troughCurrent}%</TableCell>
+                          <TableCell className='font-medium border-l-2 border-r-2 ' align="left">{row.peakCurrent
+                          }%</TableCell>
+                          <TableCell className='font-medium border-l-2 border-r-2 ' align="left">{row.last12Month}%</TableCell>
+                          <TableCell className='font-medium border-l-2 border-r-2 ' align="left">{row.last3Month
+                          }%</TableCell>
+                          <TableCell className='font-medium border-l-2 border-r-2 ' align="left">{row.lastMonth}%</TableCell>
+                          <TableCell className='font-medium border-l-2 border-r-2 py-1' align="left">
+                            <button onClick={() => { handleDeleteRequest(row.cityName) }} className=' border-cyan-300 bg-yellow-500 w-[100px] h-[30px] rounded-lg hover:bg-yellow-300 mb-2'>UPDATE</button>
 
-                              <button onClick={() => { handleDeleteRequest(row.cityName) }} className=' border-cyan-300 bg-red-500 w-[100px] h-[30px] rounded-lg hover:bg-red-300'>DELETE</button>
-                            </TableCell>
+                            <button onClick={() => { handleDeleteRequest(row.cityName) }} className=' border-cyan-300 bg-red-500 w-[100px] h-[30px] rounded-lg hover:bg-red-300'>DELETE</button>
+                          </TableCell>
 
-                          </TableRow>
-                        )
-
+                        </TableRow>
                       )
+
+
                     })}
 
                     {emptyRows > 0 && (

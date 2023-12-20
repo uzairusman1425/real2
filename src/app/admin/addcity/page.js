@@ -72,7 +72,7 @@ function Page() {
       console.log(postData);
 
       // const url = `${process.env.API_URL}/api/admin/table/Karachi`
-      const url = `http://localhost:3000/api/admin/table/${cityname}`
+      const url = `/api/admin/table/${cityname}`
 
       const response = await axios.delete(url);
       toast.success("Row deleted")
