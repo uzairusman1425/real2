@@ -26,8 +26,12 @@ const CityTable = () => {
 
     const handledelete = async () => {
 
-        const response = await axios.delete(`http://localhost:3000/api/admin/country/${name}`)
-        console.log(response);
+        await axios.delete(`/api/admin/country/${name}`).then((response) => {
+
+        }).catch((error) => {
+            console.log(error.message);
+        })
+
     }
 
     return (
