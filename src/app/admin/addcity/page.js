@@ -4,7 +4,7 @@ import Navbar from '../../../components/admin/PropertyType/Navbar'
 import axios from 'axios'
 import toast, { Toaster } from 'react-hot-toast'
 import TableComp from '../../../components/admin/city/TableComp'
-
+import UpdateTable from '../../../components/admin/UpdateTable'
 function Page() {
   const [ParentCity, setParentCity] = useState()
   const [city, setCity] = useState()
@@ -16,8 +16,10 @@ function Page() {
   const [lastm, setLastM] = useState()
   const [yearOnYear, setYearOnYear] = useState([])
   const [deleteRow, setDeleteRow] = useState('')
-  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedOption, setSelectedOption] = useState(true);
   const [cities, setCities] = useState([])
+  const [refresh, setRefresh] = useState(false)
+  const [hide, setHide] = useState(false)
   const handleSelectChange = (event) => {
     setParentCity(event.target.value);
 
@@ -62,27 +64,24 @@ function Page() {
     }
   };
 
+
+
   const handleDeleteRequest = async (cityname) => {
 
-    const postData = {
-      "cityName": deleteRow
-    };
+
     try {
-
-      console.log(postData);
-
-      // const url = `${process.env.API_URL}/api/admin/table/Karachi`
-      const url = `/api/admin/table/${cityname}`
+      const url = `/api/admin/table?cityName=${cityname}`
 
       const response = await axios.delete(url);
       toast.success("Row deleted")
+      setRefresh((per) => !per)
+
       setDeleteRow('')
-      setTimeout(() => {
-        location.reload();
-      }, 1000);
-      console.log(response.data);
+
+
+
     } catch (error) {
-      // Handle errors
+
       toast.error("Could not delete")
       console.error('Error:', error.message);
     }
@@ -91,23 +90,21 @@ function Page() {
 
   useEffect(() => {
     const getResponse = async () => {
-
-      const response = await axios.get(`/api/admin/country`)
-
-      const data = await response?.data?.data
-      let uniqueCity = new Set()
+      const response = await axios.get(`/api/admin/country`);
+      const data = await response?.data?.data;
+      let uniqueCity = new Set();
       for (let a of data) {
-        a.cities.forEach(city => {
-          uniqueCity.add(city)
-
+        a.cities.forEach((city) => {
+          uniqueCity.add(city);
         });
-
       }
-      let accumulatedCities = Array.from(uniqueCity)
+      let accumulatedCities = Array.from(uniqueCity);
       setCities((prevCities) => [...prevCities, ...accumulatedCities]);
-    }
+    };
+
     getResponse();
-  }, [])
+  }, []);
+
 
 
 
@@ -117,7 +114,8 @@ function Page() {
     setYearOnYear(arr);
   }
   return (
-    <div className=''>
+    <div className=' relative'>
+      <UpdateTable hide={hide} />
       <Toaster />
       <Navbar page={'addcity'} />
       <div>
@@ -167,11 +165,26 @@ function Page() {
       </form>
 
       <h1 className='w-full text-white text-center text-3xl mt-20 font-semibold'>Delete a row</h1>
+      <select
 
+        value={ParentCity}
 
-      <TableComp handleDeleteRequest={handleDeleteRequest} />
+        onChange={handleSelectChange}
+        className=" w-[200px] block appearance-none ml-[20vw] bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline"
+      >
+        <option value="">Select city</option>
+        {
+          cities.map((item, index) => {
+            return (
+
+              <option key={index} value={item?.name}>{item?.name}</option>
+            )
+          })
+        }
+      </select>
+
+      <TableComp handleDeleteRequest={handleDeleteRequest} refresh={refresh} cityName={ParentCity} />
       {/* <input type="button" value="Submit" onClick={handleDeleteRequest} className='bg-white w-52 h-20 rounded-2xl m-2 p-4 cursor-pointer hover:bg-gray-500 hover:text-white text-xl font-semibold' /> */}
-
 
     </div>
   )

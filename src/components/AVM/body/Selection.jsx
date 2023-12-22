@@ -10,8 +10,8 @@ import axios from 'axios'
 
 
 function Selection() {
-  const [selected, setSelected] = useState("");
-  const [countrylist, setCountrylist] = useState(["CY", "AB", "DZ", "CY"])
+  const [selected, setSelected] = useState("CY");
+  const [countrylist, setCountrylist] = useState(["CY"])
   const [cityWithCountry, setCityWithCountry] = useState([])
   const [cities, setCities] = useState([])
   const tempCountryArray = [];
@@ -88,20 +88,18 @@ function Selection() {
             className='w-72 text-xs '
 
           />
-          <select name="" id="cities" className='w-[20rem] border-gray-300 border-[1px] rounded-md h-9'>
-            <option value="-" defaultValue={null} className='text-white'>Cities</option>
+
+          <select
+            id="countries"
+            className=" w-[20rem]     h-9 bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block   p-2.5  dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          >
+            <option selected>Choose a country</option>
             {
               removeDuplicates(cities).map((item, index) => {
                 return <option value={item} key={index}>{item}</option>
               })
             }
-
-            {/* {City?.getCitiesOfCountry(selected)?.map((item,index)=>{
-                return <option value={item.name} key={index}>{item.name}</option>
-                  
-              })} */}
           </select>
-
 
           <button type='button' className='bg-green-500 h-9 text-white w-56' >Search</button>
         </div>

@@ -1,25 +1,25 @@
 "use client"
 import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import toast, { Toaster } from 'react-hot-toast';
 
 
 const Page = () => {
-    
+
     const router = useRouter();
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-   
+
     const checkLogin = async () => {
-        const response = await fetch('../api/admin/login',{
+        const response = await fetch('../api/admin/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({username, password})
+            body: JSON.stringify({ username, password })
         })
-        const reply= await response.json()
+        const reply = await response.json()
 
         if (response.ok) {
             localStorage.setItem("session", "session")
@@ -33,14 +33,14 @@ const Page = () => {
             // alert(`${reply.error}`)
         }
     }
-   
+
     const Check = (event) => {
         event.preventDefault();
         checkLogin();
     }
     return (
         <div className='flex flex-row justify-center items-center'>
-            <Toaster/>
+            <Toaster />
             <form className='flex flex-col justify-center items-center mt-40' onSubmit={Check}>
                 <input
                     className='mb-5 px-4 py-2 text-lg text-gray-700 border-2 border-gray-300 rounded-md focus:outline-none focus:border-blue-500'

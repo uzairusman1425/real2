@@ -1,6 +1,6 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
-
+import UserContextProvider from '../context/UsercontextProvider'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -10,11 +10,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+
     <html lang="en" className='flex-grow'>
-      
-          <body className={inter.className}>{children}</body>
-      
+      <body className={inter.className}>
+        <UserContextProvider>
+          {children}
+        </UserContextProvider>
+
+      </body>
     </html>
-    
+
   )
 }

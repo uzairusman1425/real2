@@ -6,8 +6,8 @@ import { City } from 'country-state-city';
 import MultipleSelectCheckmarks from '../../../components/AVM/body/MultipleSelectCheckmarks'
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
-import CityTable from '../../../components/admin/CityTable'
-
+import CountryTable from '../../../components/admin/CountryTable'
+import CityTable from '../../../components/admin/Citytable'
 function Page() {
   const [selected, setSelected] = useState("");
   const [temparr, setTemparr] = useState([])
@@ -55,7 +55,7 @@ function Page() {
       <Toaster />
       <Navbar page={'addcountry'} />
 
-      <div className='w-screen  bg-[#38373c] flex justify-center'>
+      <div className='w-screen  bg-[#38373c] flex justify-center mt-10'>
 
         <div className=''>
           <form action="" className='container flex justify-center '>
@@ -81,7 +81,17 @@ function Page() {
 
         </div>
       </div>
-      <CityTable />
+      <div className="flex flex-row justify-center h-screen mt-10">
+        <div className=" mr-32">
+          <CountryTable />
+        </div>
+        <div className=" ">
+          <CityTable />
+        </div>
+
+
+      </div>
+
     </>
   )
 }

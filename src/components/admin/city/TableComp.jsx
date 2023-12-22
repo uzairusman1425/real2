@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useContext } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
@@ -13,7 +13,7 @@ import Paper from '@mui/material/Paper';
 import { visuallyHidden } from '@mui/utils';
 import { SvgIcon } from '@mui/material';
 import ShowChartOutlinedIcon from '@mui/icons-material/ShowChartOutlined';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import UserContext from '../../../context/Usercontext';
 
 function createData(id, city, avgprice, troughcurrent, peakcurrent, last12, last3, lastmonth, yearonyear) {
   return {
@@ -173,7 +173,7 @@ EnhancedTableHead.propTypes = {
 
 
 
-function TableComp({ handleDeleteRequest }) {
+function TableComp({ handleDeleteRequest, refresh, cityName }) {
 
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('avgprice');
@@ -181,10 +181,12 @@ function TableComp({ handleDeleteRequest }) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(500);
   const [rows, setRows] = useState([])
+  const { updateTable, setUpdateTable, setTableData } = useContext(UserContext)
 
   useEffect(() => {
     const getApi = async () => {
       await axios.get('/api/admin/table').then((response) => {
+
 
         response.data.data.map((item, index) => {
           setRows(response?.data?.data)
@@ -197,13 +199,13 @@ function TableComp({ handleDeleteRequest }) {
     }
 
     getApi();
-  }, [])
+  }, [refresh])
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
 
-    console.log(rows);
+
     setOrderBy(property);
   };
 
@@ -234,7 +236,15 @@ function TableComp({ handleDeleteRequest }) {
       ),
     [order, orderBy, page, rowsPerPage],
   );
+  const hadnleupdate = (name, parent, id) => {
 
+    setUpdateTable(!updateTable)
+    setTableData({
+      id: id,
+      ParentCity: parent,
+      cityName: name
+    })
+  }
 
   return (
     <>
@@ -262,11 +272,10 @@ function TableComp({ handleDeleteRequest }) {
                     {visibleRows.map((row, index) => {
 
                       const labelId = `enhanced-table-checkbox-${index}`;
-                      {/* console.log(row.yearonyear); */ }
-                      return (
 
+                      return row?.ParentCity === cityName ? (
 
-                        <TableRow key={index}>
+                        <TableRow key={index} >
 
                           <TableCell
                             component="th"
@@ -293,7 +302,7 @@ function TableComp({ handleDeleteRequest }) {
                           </TableCell>
                           <TableCell className='font-medium border-l-2 border-r-2 ' align="left">€ {row.averagePrice}</TableCell>
                           { }
-                          <TableCell className='font-medium border-l-2 border-r-2 ' align="left">{row.troughCurrent}%</TableCell>
+                          <TableCell className='font-medium border-l-2 border-r-2 ' align="left" > {row.troughCurrent} %</TableCell>
                           <TableCell className='font-medium border-l-2 border-r-2 ' align="left">{row.peakCurrent
                           }%</TableCell>
                           <TableCell className='font-medium border-l-2 border-r-2 ' align="left">{row.last12Month}%</TableCell>
@@ -301,15 +310,14 @@ function TableComp({ handleDeleteRequest }) {
                           }%</TableCell>
                           <TableCell className='font-medium border-l-2 border-r-2 ' align="left">{row.lastMonth}%</TableCell>
                           <TableCell className='font-medium border-l-2 border-r-2 py-1' align="left">
-                            <button onClick={() => { handleDeleteRequest(row.cityName) }} className=' border-cyan-300 bg-yellow-500 w-[100px] h-[30px] rounded-lg hover:bg-yellow-300 mb-2'>UPDATE</button>
+                            <button onClick={() => { hadnleupdate(row.cityName, row.ParentCity, row._id) }} className=' border-cyan-300 bg-yellow-500 w-[100px] h-[30px] rounded-lg hover:bg-yellow-300 mb-2'>UPDATE</button>
 
                             <button onClick={() => { handleDeleteRequest(row.cityName) }} className=' border-cyan-300 bg-red-500 w-[100px] h-[30px] rounded-lg hover:bg-red-300'>DELETE</button>
                           </TableCell>
 
                         </TableRow>
-                      )
 
-
+                      ) : null
                     })}
 
                     {emptyRows > 0 && (
@@ -327,8 +335,8 @@ function TableComp({ handleDeleteRequest }) {
 
             </Paper>
           </Box>
-        </div>
-      </div>
+        </div >
+      </div >
     </>
   )
 }
