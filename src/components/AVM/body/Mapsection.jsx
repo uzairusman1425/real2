@@ -6,6 +6,7 @@ import linkedin from "../../../assets/icons8-linkedin.svg"
 import grid from "../../../assets/icons8-grid-64.png"
 import Image from 'next/image'
 import GoolgeMap from '../../GoolgeMap/MyComponent'
+import Mapskeys from './Mapskeys'
 
 
 
@@ -31,10 +32,11 @@ function Mapsection() {
                 </div>
             </div>
             <div className='w-screen  bg-white overflow-hidden'>
-                <div id="map-stats-form-bg" className='container h-96 flex justify-center'>
-                    <div id='map-stats-form-section' className='border-2 border-black w-screen'>
+                <div id="map-stats-form-bg" className='container h-auto mt-2 flex flex-col justify-center'>
+                    <div id='map-stats-form-section' className=' container border-black w-screen'>
                         <GoolgeMap />
                     </div>
+                    <Mapskeys/>
                 </div>
             </div>
 

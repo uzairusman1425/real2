@@ -21,7 +21,7 @@ function Page() {
       country: selected,
       cities: cityObject
     };
-
+    console.log(postData);
     try {
 
       const response = await axios.post('../api/admin/country', postData);

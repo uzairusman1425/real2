@@ -56,14 +56,6 @@ const tableSchema = new mongoose.Schema({
             },
             message: "yearOnYear should have exactly 12 numbers within the range of -100 to 100."
         }
-    },
-    lat: {
-        type: String,
-        required: true
-    },
-    lng: {
-        type: String,
-        required: true
     }
 });
 
