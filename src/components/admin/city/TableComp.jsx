@@ -13,7 +13,7 @@ import Paper from '@mui/material/Paper';
 import { visuallyHidden } from '@mui/utils';
 import { SvgIcon } from '@mui/material';
 import ShowChartOutlinedIcon from '@mui/icons-material/ShowChartOutlined';
-import UserContext from '../../../context/Usercontext';
+import UserContext from '../../../context/UserContext';
 
 function createData(id, city, avgprice, troughcurrent, peakcurrent, last12, last3, lastmonth, yearonyear) {
   return {

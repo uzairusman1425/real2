@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { GoogleMap, LoadScript, Autocomplete, Marker } from '@react-google-maps/api';
-import UserContext from '../../context/Usercontext';
+import UserContext from '../../context/UserContext';
 import { useRef } from 'react';
 
 const MapContainer = () => {

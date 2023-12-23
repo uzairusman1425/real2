@@ -6,7 +6,7 @@ import { City } from 'country-state-city';
 import { useState, useEffect, useContext } from 'react';
 import PropertyType from '../../AVM/body/PropertyType/PropertyType';
 import axios from 'axios'
-import UserContext from '../../../context/Usercontext';
+import UserContext from '../../../context/UserContext';
 
 
 function Selection() {

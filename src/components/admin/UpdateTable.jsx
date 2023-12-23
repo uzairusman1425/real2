@@ -1,6 +1,6 @@
 import { Hidden } from '@mui/material';
 import React, { useState, useContext, useEffect } from 'react';
-import UserContext from '../../context/Usercontext';
+import UserContext from '../../context/UserContext';
 import toast, { Toaster } from 'react-hot-toast'
 import axios from 'axios';
 const YourComponent = () => {

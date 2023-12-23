@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import ReactCountryFlag from 'react-country-flag';
 import ReactFlagsSelect from 'react-flags-select';
-import UserContext from '../../context/Usercontext'
+import UserContext from '../../context/UserContext'
 const CountryTable = () => {
     const [countrylist, setCountrylist] = useState([]);
     const [name, setName] = useState('');

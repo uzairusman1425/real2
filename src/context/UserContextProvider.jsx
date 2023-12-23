@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react"
 
-import UserContext from './Usercontext'
+import UserContext from './UserContext'
 
 const UserContextProvider = ({ children }) => {
 
