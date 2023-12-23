@@ -29,7 +29,6 @@ const MapContainer = () => {
 
     };
     useEffect(() => {
-
         setUpdateLat({
             lat: center.lat,
             lng: center.lng

@@ -1,10 +1,12 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import Navbar from '../../../components/admin/PropertyType/Navbar'
 import axios from 'axios'
 import toast, { Toaster } from 'react-hot-toast'
 import TableComp from '../../../components/admin/city/TableComp'
 import UpdateTable from '../../../components/admin/UpdateTable'
+import MapContainer from '../../../components/GoolgeMap/MapContainer'
+import UserContext from '../../../context/Usercontext'
 function Page() {
   const [ParentCity, setParentCity] = useState()
   const [city, setCity] = useState()
@@ -14,17 +16,30 @@ function Page() {
   const [last12, setLast12] = useState()
   const [last3, setLast3] = useState()
   const [lastm, setLastM] = useState()
+  const [lat, setLat] = useState({
+    lat: '',
+    lng: ''
+  })
+
   const [yearOnYear, setYearOnYear] = useState([])
   const [deleteRow, setDeleteRow] = useState('')
   const [selectedOption, setSelectedOption] = useState(true);
   const [cities, setCities] = useState([])
   const [refresh, setRefresh] = useState(false)
   const [hide, setHide] = useState(false)
+  const { name, updateLat } = useContext(UserContext)
+
   const handleSelectChange = (event) => {
     setParentCity(event.target.value);
 
   };
-
+  useEffect(() => {
+    setCity(name)
+    setLat({
+      lat: updateLat.lat,
+      lng: updateLat.lng
+    })
+  }, [name])
   const handlePostRequest = async () => {
     const postData = {
       ParentCity: ParentCity,
@@ -35,7 +50,9 @@ function Page() {
       last12Month: last12,
       last3Month: last3,
       lastMonth: lastm,
-      yearOnYear: yearOnYear
+      yearOnYear: yearOnYear,
+      lat: lat.lat,
+      lng: lat.lng
     };
     // console.log(postData);
     try {
@@ -113,6 +130,8 @@ function Page() {
     arr[index] = item
     setYearOnYear(arr);
   }
+
+
   return (
     <div className=' relative'>
       <UpdateTable hide={hide} />
@@ -122,6 +141,10 @@ function Page() {
         <h1 className='text-center text-4xl font-bold text-white my-10'>Add a City</h1>
       </div>
 
+      <div className='flex flex-col w-[50%] relative left-[23%] mb-10'>
+        <div className=' text-white'>Selec District</div>
+        <MapContainer />
+      </div>
 
       <form action="" className='flex flex-wrap container justify-center'>
         <select
@@ -140,13 +163,15 @@ function Page() {
           }
         </select>
 
-        <input type="text" value={city} onChange={(e) => { setCity(e.target.value) }} name="city" id="city" className='m-2 p-4 rounded-lg w-[40%]' placeholder='City' />
+
+        <input type="text" value={name} name="city" id="city" className='m-2 p-4 rounded-lg w-[40%]' placeholder='City' />
         <input type="text" value={averagePrice} onChange={(e) => { setaveragePrice(e.target.value) }} name="avgprice" id="avgprice" className='m-2 p-4 rounded-lg w-[40%]' placeholder='Average price' />
         <input type="text" value={troughcurrent} onChange={(e) => { setTroughcurrent(e.target.value) }} name="trcurrent" id="trcurrent" className='m-2 p-4 rounded-lg w-[40%]' placeholder='Trough current' />
         <input type="text" value={peakCurrent} onChange={(e) => { setPeakCurrent(e.target.value) }} name="peakcurrrent" id="peakcurrrent" className='m-2 p-4 rounded-lg w-[40%]' placeholder='Peak current' />
         <input type="text" value={last12} onChange={(e) => { setLast12(e.target.value) }} name="last12" id="last12" className='m-2 p-4 rounded-lg w-[40%]' placeholder='Last 12 months' />
         <input type="text" value={last3} onChange={(e) => { setLast3(e.target.value) }} name="last3" id="last3" className='m-2 p-4 rounded-lg w-[40%]' placeholder='Last 3 months' />
         <input type="text" value={lastm} onChange={(e) => { setLastM(e.target.value) }} name="last" id="last" className='m-2 p-4 rounded-lg w-[40%]' placeholder='Last month' />
+
         <br />
         <h1 className='w-full text-white text-center text-3xl m-10 font-semibold'>Enter year on year records</h1>
         <input type="text" value={yearOnYear[0]} onChange={(e) => { setIndexYearOnYear(e.target.value, 0) }} name="yearonyear1" id="yearonyear1" className='m-2 p-4 rounded-lg w-[40%]' placeholder='Month 1' />
