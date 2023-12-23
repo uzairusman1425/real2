@@ -7,7 +7,7 @@ import grid from "../../../assets/icons8-grid-64.png"
 import Image from 'next/image'
 import GoolgeMap from '../../GoolgeMap/MyComponent'
 
-
+import Mapskeys from '../body/Mapskeys'
 
 function Mapsection() {
     return (

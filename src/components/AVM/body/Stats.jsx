@@ -173,7 +173,7 @@ function Stats() {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(500);
   const [rows, setRows] = useState([])
-  const { Avm, setAvm } = useContext(UserContext)
+  const { Avm, setAvm, setCityData } = useContext(UserContext)
 
   useEffect(() => {
     const getApi = async () => {
@@ -185,6 +185,7 @@ function Stats() {
         //   setRows(current => [...current,createData(index+1,item.cityName,item.averagePrice,item.troughCurrent,item.peakCurrent,item.last12Month,item.last3Month,item.lastMonth,item.yearOnYear)])
         // })
         setRows(response?.data?.data)
+        setCityData(response?.data?.data)
         setTimeout(() => {
           console.log("Check");
           setOrder("asc")
@@ -268,11 +269,13 @@ function Stats() {
                   />
                   <TableBody>
                     {visibleRows.map((row, index) => {
+
                       const labelId = `enhanced-table-checkbox-${index}`;
                       {/* console.log(row.yearonyear); */ }
 
                       return row?.ParentCity === Avm ? (
-                        <TableRow key={index}>
+
+                        < TableRow key={index} >
 
                           <TableCell
                             component="th"
@@ -346,7 +349,7 @@ function Stats() {
             </Paper>
           </Box>
         </div>
-      </div>
+      </div >
 
     </>
   )

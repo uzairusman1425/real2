@@ -1,5 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { GoogleMap, useJsApiLoader, useGoogleMap } from '@react-google-maps/api';
+import UserContext from '../../context/Usercontext';
+
 const containerStyle = {
     width: '100%',
     height: '600px'
@@ -23,26 +25,34 @@ const gradient = [
 // Custom component to add a heatmap layer
 function HeatmapLayer() {
     const map = useGoogleMap();
+    const { Avm, cityData } = useContext(UserContext)
+
+
     useEffect(() => {
-        if (!map) return;
+        if (!Avm || !map) return;
+
+        const filteredData = cityData
+            .filter(item => item.ParentCity === Avm)
+            .map(item => new window.google.maps.LatLng(parseFloat(item.lat), parseFloat(item.lng)));
+
         // Example heatmap data
         const data = [
-            new window.google.maps.LatLng(24.8607343, 67.0011364),
-            new window.google.maps.LatLng(35.1860, 33.3827),
-            new window.google.maps.LatLng(35.1864, 33.3831),
-            new window.google.maps.LatLng(35.1868, 33.3835),
+
+            ...filteredData,  // Add LatLng objects from cityData
             // Add more LatLng objects for heatmap data...
         ];
+
         const heatmap = new window.google.maps.visualization.HeatmapLayer({
             data: data,
             map: map,
             radius: 60,
             gradient: gradient
         });
+
         return () => {
             heatmap.setMap(null);
         };
-    }, [map]);
+    }, [Avm, map, cityData]);
     return null;
 }
 function MyComponent() {
