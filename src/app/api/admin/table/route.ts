@@ -13,7 +13,7 @@ export async function POST(req: any) {
     try {
 
         const reqBody = await req.json()
-        const { ParentCity, cityName, averagePrice, troughCurrent, peakCurrent, last12Month, last3Month, lastMonth, yearOnYear, lat, lng } = reqBody
+        const { ParentCity, cityName, averagePrice, troughCurrent, peakCurrent, last12Month, last3Month, lastMonth, yearOnYear } = reqBody
 
         const iscity = await TableData.findOne({ cityName })
 
@@ -31,9 +31,7 @@ export async function POST(req: any) {
             last12Month,
             last3Month,
             lastMonth,
-            yearOnYear,
-            lat,
-            lng
+            yearOnYear
         })
 
 

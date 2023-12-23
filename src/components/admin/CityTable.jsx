@@ -25,7 +25,7 @@ const CityTable = () => {
 
             await axios.delete(`/api/admin/country?country=${selectedCity.country}&city=${selectedCity.cityName}`).then((response) => {
                 setRefresh((prev) => !prev);
-
+                console.log(response);
             }).catch((error) => {
                 console.log(error.message);
             })

@@ -48,7 +48,8 @@ const YourComponent = () => {
         setUpdateTable(!updateTable)
     };
 
-
+    console.log(tableData.id);
+    console.log(formData);
     const patchData = async (data) => {
         try {
             const url = '/api/admin/table'; // Replace with your actual API endpoint
@@ -69,7 +70,7 @@ const YourComponent = () => {
         }
     };
     useEffect(() => {
-
+        console.log("tableData.ParentCity:", tableData.ParentCity);
     }, [tableData.ParentCity]);
 
 
