@@ -7,7 +7,7 @@ import MultipleSelectCheckmarks from '../../../components/AVM/body/MultipleSelec
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
 import CountryTable from '../../../components/admin/CountryTable'
-import CityTable from '../../../components/admin/Citytable'
+import CityTable from '../../../components/admin/CityTable'
 function Page() {
   const [selected, setSelected] = useState("");
   const [temparr, setTemparr] = useState([])
