@@ -27,7 +27,7 @@ function HeatmapLayer() {
         if (!map) return;
         // Example heatmap data
         const data = [
-            new window.google.maps.LatLng(35.1856, 33.3823),
+            new window.google.maps.LatLng(24.8607343, 67.0011364),
             new window.google.maps.LatLng(35.1860, 33.3827),
             new window.google.maps.LatLng(35.1864, 33.3831),
             new window.google.maps.LatLng(35.1868, 33.3835),

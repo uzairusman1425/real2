@@ -2,20 +2,25 @@
 import React from 'react'
 
 import ReactFlagsSelect from "react-flags-select";
-import { useState, useEffect } from 'react';
+import { City } from 'country-state-city';
+import { useState, useEffect, useContext } from 'react';
+import PropertyType from '../../AVM/body/PropertyType/PropertyType';
 import axios from 'axios'
-
+import UserContext from '../../../context/Usercontext';
 
 
 function Selection() {
   const [selected, setSelected] = useState("");
-  const [countrylist, setCountrylist] = useState([""])
+  const [countrylist, setCountrylist] = useState(["CY"])
   const [cityWithCountry, setCityWithCountry] = useState([])
   const [cities, setCities] = useState([])
   const tempCountryArray = [];
   let newCountryArray = [];
+  const { Avm, setAvm } = useContext(UserContext)
   const pushIntoArray = (item) => {
     // console.log(item);
+
+
 
     const newCountryArray = [...countrylist, item];
     // console.log(newCountryArray);
@@ -54,19 +59,6 @@ function Selection() {
       // console.log(cityWithCountry);
     }
     getResponse();
-
-    setTimeout(() => {
-      console.log("in useeffect");
-      console.log(cityWithCountry);
-      cityWithCountry?.filter((item) => (item.country === selected))?.map((item) => {
-        item?.cities?.map((item) => {
-          console.log("name");
-          console.log(item.name);
-          setCities(current => [...current, item?.name])
-          // console.log(removeDuplicates());
-        })
-      })
-    }, 10000);
   }, [])
 
   useEffect(() => {
@@ -101,11 +93,16 @@ function Selection() {
           />
 
           <select
+            onChange={(e) => {
+              setAvm(e.target.value)
+            }}
             id="countries"
-            className=" w-[20rem] h-10 bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block "
+            className=" w-[20rem]     h-9 bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block   p-2.5  dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
+            <option selected>Choose a country</option>
             {
               removeDuplicates(cities).map((item, index) => {
+
                 return <option value={item} key={index}>{item}</option>
               })
             }
