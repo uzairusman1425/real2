@@ -31,6 +31,8 @@ function HeatmapLayer() {
     useEffect(() => {
         if (!Avm || !map) return;
 
+
+
         const filteredData = cityData
             .filter(item => item.ParentCity === Avm)
             .map(item => new window.google.maps.LatLng(parseFloat(item.lat), parseFloat(item.lng)));
