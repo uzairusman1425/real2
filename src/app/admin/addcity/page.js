@@ -40,6 +40,7 @@ function Page() {
       lng: updateLat.lng
     })
   }, [name])
+
   const handlePostRequest = async () => {
     const postData = {
       ParentCity: ParentCity,
