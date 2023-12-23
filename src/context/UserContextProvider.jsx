@@ -13,13 +13,26 @@ const UserContextProvider = ({ children }) => {
         cityName: "",
     })
 
+    const [updateLat, setUpdateLat] = useState({
+        lat: '',
+        lng: ''
+    })
+    const [name, setName] = useState('')
+    const [Avm, setAvm] = useState('')
+
     const providervalues = {
         refresh,
         setRefresh,
         updateTable,
         setUpdateTable,
         tableData,
-        setTableData
+        setTableData,
+        updateLat,
+        setUpdateLat,
+        name,
+        setName,
+        Avm,
+        setAvm
     }
     return (
         <UserContext.Provider value={providervalues}>
