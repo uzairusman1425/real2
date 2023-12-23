@@ -6,11 +6,11 @@ import Stats from '../../components/AVM/body/Stats'
 import Formdetails from '../../components/AVM/body/Formdetails'
 import Headerfooter from '../../components/headerfooter/HeaderFooter'
 import Geolocation from '../../components/GoolgeMap/Geolocation'
-import UserContext from '../../context/Usercontext'
-import { useContext } from 'react'
+
+
 export default function Home() {
 
-  const { name } = useContext(UserContext)
+
 
 
   return (
@@ -23,7 +23,7 @@ export default function Home() {
           <Selection />
           <Mapsection />
           <Stats />
-
+          <Geolocation />
           <Formdetails />
 
 

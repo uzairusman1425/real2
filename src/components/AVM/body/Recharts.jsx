@@ -135,7 +135,7 @@ function Recharts({values}) {
   };
     // console.log(values);
   return (
-  <div className='m-0 p-0'>
+  <div className='m-0 p-0 w-full justify-center'>
     <Bar options={options} data={data} width={20} height={4}  className="z-[999]" />
   </div>
     );

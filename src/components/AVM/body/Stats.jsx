@@ -1,5 +1,5 @@
 
-import { useEffect, useState, useMemo, useContext } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
@@ -15,7 +15,6 @@ import { visuallyHidden } from '@mui/utils';
 import { SvgIcon } from '@mui/material';
 import ShowChartOutlinedIcon from '@mui/icons-material/ShowChartOutlined';
 import Recharts from './Recharts';
-import UserContext from '../../../context/Usercontext';
 
 
 function createData(id, city, avgprice, troughcurrent, peakcurrent, last12, last3, lastmonth, yearonyear) {
@@ -32,6 +31,10 @@ function createData(id, city, avgprice, troughcurrent, peakcurrent, last12, last
 
   };
 }
+
+
+
+
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -143,6 +146,10 @@ function EnhancedTableHead(props) {
               onClick={createSortHandler(headCell.id)}
               className=''
             >
+
+
+
+
               {orderBy === headCell.id ? (
                 <Box component="span" sx={visuallyHidden}>
                   {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
@@ -165,6 +172,12 @@ EnhancedTableHead.propTypes = {
   rowCount: PropTypes.number.isRequired,
 };
 
+
+
+
+
+
+
 function Stats() {
 
   const [order, setOrder] = useState('asc');
@@ -173,14 +186,18 @@ function Stats() {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(500);
   const [rows, setRows] = useState([])
-  const { Avm, setAvm } = useContext(UserContext)
+  const [avgAp,setAvgAp]= useState()
+  const [avgTrough,setAvgTrough]= useState()
+  const [avgPeak,setAvgPeak]= useState()
+  const [avgL12,setAvg12]= useState()
+  const [avgL3,setAvg3]= useState()
+  const [avgL,setAvgL]= useState()
+  // const [avg,setAvg]=()
 
   useEffect(() => {
     const getApi = async () => {
       await axios.get('api/admin/table').then((response) => {
-
-
-
+        console.log(response.data.data);
         // response.data.data.map((item,index)=>{
         //   setRows(current => [...current,createData(index+1,item.cityName,item.averagePrice,item.troughCurrent,item.peakCurrent,item.last12Month,item.last3Month,item.lastMonth,item.yearOnYear)])
         // })
@@ -196,10 +213,14 @@ function Stats() {
     getApi();
   }, [])
 
+ 
+
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
-
+    console.log(order);
+    console.log(property);
+    setOrderBy(property);
   };
 
   const handleSelectAllClick = (event) => {
@@ -211,6 +232,12 @@ function Stats() {
     setSelected([]);
   };
 
+
+
+
+
+
+  // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
@@ -223,6 +250,40 @@ function Stats() {
     [order, orderBy, page, rowsPerPage],
   );
 
+  // const checkstyle = (num) =>{
+  //   return ({backgroundColor:"black"})
+  //   if(num>20)
+  //   {
+
+  //   }
+  // }
+
+  const checkcolor = (value) =>{
+    if(value>=20)
+    {
+      return {backgroundColor:'#6aa84f'}
+    }
+    else if(value>10)
+    {
+    return {backgroundColor:'#93c47d'}
+    }
+    else if(value>5)
+    {
+    return {backgroundColor:'#e06666'}
+    }
+    else if(value<=-20)
+    {
+    return {backgroundColor:'#6aa84f'}
+    }
+    else if(value<-10)
+    {
+    return {backgroundColor:'#d88d8d'}
+    }
+    else if(value<=-5)
+    {
+    return {backgroundColor:'#f4cccc'}
+    }
+  }
 
   const getCellStyle = (value) => {
     // Your logic to compute styles based on the cell value
@@ -244,6 +305,33 @@ function Stats() {
       // Add more styles as needed
     };
   };
+
+  useEffect(() => {
+    let sum1=0
+    let sum2=0
+    let sum3=0
+    let sum4=0
+    let sum5=0
+    let sum6=0
+    rows.forEach((item)=>{
+      sum1=+item.averagePrice;
+      sum2=+item.troughCurrent
+      sum3=+item.peakCurrent
+      sum4=+item.last12Month
+      sum5=+item.last3Month
+      sum6=+item.lastMonth
+    })
+    setAvgAp(sum1/rows.length)
+    setAvgTrough(sum2/rows.length)
+    setAvgPeak(sum3/rows.length)
+    setAvg12(sum4/rows.length)
+    setAvg3(sum5/rows.length)
+    setAvgL(sum6/rows.length)
+    
+  }, [rows])
+  
+
+  // const cellStyle = getCellStyle(value);
 
 
   return (
@@ -270,8 +358,7 @@ function Stats() {
                     {visibleRows.map((row, index) => {
                       const labelId = `enhanced-table-checkbox-${index}`;
                       {/* console.log(row.yearonyear); */ }
-
-                      return row?.ParentCity === Avm ? (
+                      return (
                         <TableRow key={index}>
 
                           <TableCell
@@ -298,18 +385,15 @@ function Stats() {
 
 
                           </TableCell>
-                          <TableCell padding="none" margin="none" className='font-medium border-l-2 border-r-2 px-2' align="left">€ {row.averagePrice}</TableCell>
-                          <TableCell padding="none" margin="none" className='font-medium border-l-2 border-r-2 px-2' align="left">{row.troughCurrent}%</TableCell>
-                          <TableCell padding="none" margin="none" className='font-medium border-l-2 border-r-2 px-2' align="left">{row.peakCurrent
-                          }%</TableCell>
-                          <TableCell padding="none" margin="none" className='font-medium border-l-2 border-r-2 px-2' align="left">{row.last12Month}%</TableCell>
-                          <TableCell padding="none" margin="none" className='font-medium border-l-2 border-r-2 px-2' align="left">{row.last3Month
-                          }%</TableCell>
-                          <TableCell padding="none" margin="none" className='font-medium border-l-2 border-r-2 px-2' align="left">{row.lastMonth}%</TableCell>
-                          <TableCell padding="none" margin="none" className='font-medium border-l-2 border-r-2 py-1 px-1' align="left"><Recharts values={row.yearOnYear
-                          } /></TableCell>
+                          <TableCell padding="none" margin="none" style={checkcolor(row.averagePrice)}  className='font-medium border-l-2 border-r-2 px-2' align="left">€ {row.averagePrice}</TableCell>
+                          <TableCell padding="none" margin="none" style={checkcolor(row.troughCurrent)} className='font-medium border-l-2 border-r-2 px-2' align="left">{row.troughCurrent}%</TableCell>
+                          <TableCell padding="none" margin="none" style={checkcolor(row.peakCurrent)} className='font-medium border-l-2 border-r-2 px-2' align="left">{row.peakCurrent}%</TableCell>
+                          <TableCell padding="none" margin="none" style={checkcolor(row.last12Month)} className='font-medium border-l-2 border-r-2 px-2' align="left">{row.last12Month}%</TableCell>
+                          <TableCell padding="none" margin="none" style={checkcolor(row.last3Month)} className='font-medium border-l-2 border-r-2 px-2' align="left">{row.last3Month}%</TableCell>
+                          <TableCell padding="none" margin="none" style={checkcolor(row.lastMonth)} className='font-medium border-l-2 border-r-2 px-2' align="left">{row.lastMonth}%</TableCell>
+                          <TableCell padding="none" margin="none" className='font-medium border-l-2 border-r-2 py-2 px-1' align="left"><Recharts values={row.yearOnYear} /></TableCell>
                         </TableRow>
-                      ) : null
+                      );
                     })}
                     <TableRow className='border-t-4 border-[#ed1d24] '>
 
@@ -320,15 +404,16 @@ function Stats() {
                         padding="none"
                         className='bg-[#e9f5fe] font-semibold px-2 p-0 m-0 border-l-2'
                       >
-                        {Avm}
+                        Famagusta
                       </TableCell>
-                      <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 bg-[#e9f5fe]' align="left">€ 3422</TableCell>
-                      <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 bg-[#e9f5fe]' align="left">-5%</TableCell>
-                      <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 bg-[#e9f5fe]' align="left">4.8%</TableCell>
-                      <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 bg-[#e9f5fe]' align="left">-0.3%</TableCell>
-                      <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 bg-[#e9f5fe]' align="left">0%</TableCell>
-                      <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 bg-[#e9f5fe]' align="left">-0.7%</TableCell>
-                      <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 bg-[#e9f5fe] py-1' align="left"><Recharts values={[4, 5, 6, -5, 23, -5, 43, -66, 34, 2, -22, 12]} /></TableCell>
+                      <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">€ {avgAp?.toFixed(2)}</TableCell>                            
+                      <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgTrough?.toFixed(2)}%</TableCell>
+                      <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgPeak?.toFixed(2)}%</TableCell>
+                      <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgL12?.toFixed(2)}%</TableCell>
+                      <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgL3?.toFixed(2)}%</TableCell>
+                      <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgL?.toFixed(2)}%</TableCell>
+                      {/* <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 bg-[#e9f5fe] py-1 px-1' align="left"><Recharts values={[4, 5, 6, -5, 23, -5, 43, -66, 34, 2, -22, 12]} /></TableCell> */}
+                      <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 bg-[#e9f5fe] py-2 px-1' align="left"><Recharts values={[5,-5,5,-5,5,-5,5,-5,5,-5,5,-5]} /></TableCell>
                     </TableRow>
                     {emptyRows > 0 && (
                       <TableRow
