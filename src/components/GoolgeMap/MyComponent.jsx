@@ -5,13 +5,7 @@ const containerStyle = {
     width: '100%',
     height: '600px'
 };
-const c = [
-    'rgba(0, 255, 255, 0)',
-    'rgb(147,112,219)',
-    'rgb(124,252,0)',
-    'rgb(255,99,71)',
-    'rgb(255,69,0)'
-];
+
 function HeatmapLayer({ center }) {
     const map = useGoogleMap();
     const { Avm, cityData } = useContext(UserContext);
@@ -59,6 +53,7 @@ function HeatmapLayer({ center }) {
         }
 
         filteredData.forEach(item => {
+            console.log(item);
             const heatmap = new window.google.maps.visualization.HeatmapLayer({
                 data: [item.location],
                 map: map,
