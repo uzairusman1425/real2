@@ -4,20 +4,17 @@ import { NextResponse } from 'next/server'
 export function middleware(request) {
     const path = request.nextUrl.pathname
 
-    const isPrivate = path === '/admin/addcountry' || path === '/admin/addcity'
+    const isPrivate = path === '/admin/addcountry' || path === '/admin/adddistrict'
 
     const token = request.cookies.get('token')?.value || ''
-    // console.log(`path : ${path} and isPrivate: ${isPrivate}`);
     if(isPrivate && !token)
     {
-        // console.log("In IF");
         return NextResponse.redirect(new URL('/admin',request.nextUrl))
     }
 
     if(!isPrivate && token)
     {
-        // console.log("In IF");
-        return NextResponse.redirect(new URL('/admin/addcity',request.nextUrl))
+        return NextResponse.redirect(new URL('/admin/adddistrict',request.nextUrl))
     }
 
 }

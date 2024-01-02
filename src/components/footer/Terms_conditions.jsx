@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import photo1 from '../../assets/logo_global.png'
+import photo1 from '../../assets/cropped-new_gold-1536x439.png'
 
 function Terms_conditions() {
   return (

@@ -24,13 +24,11 @@ const Page = () => {
         if (response.ok) {
             localStorage.setItem("session", "session")
             setTimeout(() => {
-                router.push('/admin/addcity')
+                router.push('/admin/adddistrict')
             }, 1000);
-            // alert(`${reply.message}`)
             toast.success(`${reply.message}`)
         } else {
             toast.error(`${reply.error}`)
-            // alert(`${reply.error}`)
         }
     }
 

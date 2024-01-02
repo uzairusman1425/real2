@@ -12,9 +12,6 @@ export async function POST(req: any) {
         console.log("req body", country);
         const isCountry = await Country.findOne({ country })
         console.log(isCountry);
-        // if (isCountry) {
-        //     return NextResponse.json({ error: "country exist already" }, { status: 400 })
-        // }
         const newcountry = new Country({
             country,
             cities,
@@ -43,7 +40,6 @@ export async function DELETE(req: any) {
 
     connect()
     try {
-        // const country = await req.url.split("country/")[1]
         const searchParams = await req.nextUrl.searchParams
         const country = await searchParams.get('country')
 

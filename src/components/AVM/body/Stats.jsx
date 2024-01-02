@@ -17,10 +17,10 @@ import Recharts from './Recharts';
 import UserContext from '../../../context/UserContext';
 
 
-function createData(id, city, avgprice, troughcurrent, peakcurrent, last12, last3, lastmonth, yearonyear) {
+function createData(id, district, avgprice, troughcurrent, peakcurrent, last12, last3, lastmonth, yearonyear) {
   return {
     id,
-    city,
+    district,
     avgprice,
     troughcurrent,
     peakcurrent,
@@ -48,10 +48,6 @@ function getComparator(order, orderBy) {
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
 
-// Since 2020 all major browsers ensure sort stability with Array.prototype.sort().
-// stableSort() brings sort stability to non-modern browsers (notably IE11). If you
-// only support modern browsers you can replace stableSort(exampleArray, exampleComparator)
-// with exampleArray.slice().sort(exampleComparator)
 function stableSort(array, comparator) {
   const stabilizedThis = array.map((el, index) => [el, index]);
   stabilizedThis.sort((a, b) => {
@@ -66,10 +62,10 @@ function stableSort(array, comparator) {
 
 const headCells = [
   {
-    id: 'city',
+    id: 'district',
     numeric: false,
     disablePadding: true,
-    label: 'City',
+    label: 'District',
   },
   {
     id: 'avgprice',
@@ -133,7 +129,7 @@ function EnhancedTableHead(props) {
             align={'left'}
             padding={'none'}
             sortDirection={orderBy === headCell.id ? order : false}
-            className='justify-between text-[0.95rem] font-normal text-gray-500  my-5 px-2 py-3'
+            className='justify-between text-[0.81rem] font-normal text-gray-500  my-5 px-2 py-3'
           >
             {headCell.label}
             <TableSortLabel
@@ -185,17 +181,13 @@ function Stats() {
       await axios.get('api/admin/table').then((response) => {
 
 
-
-        // response.data.data.map((item,index)=>{
-        //   setRows(current => [...current,createData(index+1,item.cityName,item.averagePrice,item.troughCurrent,item.peakCurrent,item.last12Month,item.last3Month,item.lastMonth,item.yearOnYear)])
-        // })
         setRows(response?.data?.data)
         setCityData(response?.data?.data)
         setTimeout(() => {
           setOrder("asc")
-          setOrderBy("city")
+          setOrderBy("troughCurrent")
         }, 3000);
-      })
+      }).catch((err) => {console.log(err);})
     }
 
     getApi();
@@ -236,10 +228,10 @@ function Stats() {
       return { backgroundColor: '#93c47d' }
     }
     else if (value > 5) {
-      return { backgroundColor: '#e06666' }
+      return { backgroundColor: '#90EE90' }
     }
     else if (value <= -20) {
-      return { backgroundColor: '#6aa84f' }
+      return { backgroundColor: '#d40404' }
     }
     else if (value < -10) {
       return { backgroundColor: '#d88d8d' }
@@ -250,7 +242,6 @@ function Stats() {
   }
 
   useEffect(() => {
-    // console.log(rows[0].ParentCity);
     let sum1 = 0
     let sum2 = 0
     let sum3 = 0
@@ -259,9 +250,7 @@ function Stats() {
     let sum6 = 0
     let count = 0
     rows.forEach((item) => {
-      // console.log(`${item.ParentCity} and ${Avm}`);
       if (item.ParentCity == Avm) {
-        // console.log(item.ParentCity);
         sum1 += item.averagePrice;
         sum2 += item.troughCurrent
         sum3 += item.peakCurrent
@@ -272,7 +261,6 @@ function Stats() {
       }
     })
     setAvgAp(sum1 / count)
-    // console.log(` sum1:  ${sum1} rows.length: ${count}`);
     setAvgTrough(sum2 / count)
     setAvgPeak(sum3 / count)
     setAvg12(sum4 / count)
@@ -287,7 +275,7 @@ function Stats() {
       <div className='bg-white'>
 
         <div className='container mt-20'>
-          <Box sx={{ width: '100%' }} className='border-0'>
+          <Box sx={{ width: '100%' }} className='border-0 sm:ml-0 ml-2'>
             <Paper sx={{ width: '100%', mb: 2 }} className=' shadow-none'>
               <TableContainer>
                 <Table
@@ -305,8 +293,7 @@ function Stats() {
                   <TableBody>
                     {visibleRows.map((row, index) => {
                       const labelId = `enhanced-table-checkbox-${index}`;
-                      {/* console.log(row.yearonyear); */ }
-
+               
                       return row?.ParentCity === Avm ? (
                         <TableRow key={index}>
 
@@ -334,7 +321,7 @@ function Stats() {
 
 
                           </TableCell>
-                          <TableCell padding="none" margin="none" style={checkcolor(row.averagePrice)} className='font-medium border-l-2 border-r-2 px-2' align="left">€ {row.averagePrice?.toFixed(2)}</TableCell>
+                          <TableCell padding="none" margin="none" className='font-medium border-l-2 border-r-2 px-2 py-3' align="left">€ {row.averagePrice?.toFixed(2)}</TableCell>
                           <TableCell padding="none" margin="none" style={checkcolor(row.troughCurrent)} className='font-medium border-l-2 border-r-2 px-2' align="left">{row.troughCurrent?.toFixed(2)}%</TableCell>
                           <TableCell padding="none" margin="none" style={checkcolor(row.peakCurrent)} className='font-medium border-l-2 border-r-2 px-2' align="left">{row.peakCurrent?.toFixed(2)}%</TableCell>
                           <TableCell padding="none" margin="none" style={checkcolor(row.last12Month)} className='font-medium border-l-2 border-r-2 px-2' align="left">{row.last12Month?.toFixed(2)}%</TableCell>
@@ -344,7 +331,7 @@ function Stats() {
                         </TableRow>
                       ) : null
                     })}
-                    <TableRow className='border-t-4 border-[#ed1d24] '>
+                    <TableRow className='border-t-4 border-[#e6d4d4] '>
 
                       <TableCell
                         component="th"
@@ -355,13 +342,13 @@ function Stats() {
                       >
                         {Avm}
                       </TableCell>
-                      <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">€ {avgAp?.toFixed(2)}</TableCell>
+                      <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 px-2 py-3 bg-[#e9f5fe]' align="left">€ {avgAp?.toFixed(2)}</TableCell>
                       <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgTrough?.toFixed(2)}%</TableCell>
                       <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgPeak?.toFixed(2)}%</TableCell>
                       <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgL12?.toFixed(2)}%</TableCell>
                       <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgL3?.toFixed(2)}%</TableCell>
                       <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgL?.toFixed(2)}%</TableCell>
-                      <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 bg-[#e9f5fe] py-2 px-1' align="left"><Recharts values={[5, -5, 5, -5, 5, -5, 5, -5, 5, -5, 5, -5]} /></TableCell>
+                      <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 py-2 bg-[#e9f5fe] px-1' align="left"><Recharts values={[5, -5, 5, -5, 5, -5, 5, -5, 5, -5, 5, -5]} /></TableCell>
                     </TableRow>
                     {emptyRows > 0 && (
                       <TableRow

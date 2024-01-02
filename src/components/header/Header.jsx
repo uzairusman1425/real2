@@ -5,7 +5,7 @@ import Navbar from '../header/Navbar'
 function Header({page}) {
   return (
     <>
-        {/* <Logo/> */}
+        <Logo/>
         <Navbar page={page}/>
     </>
   )

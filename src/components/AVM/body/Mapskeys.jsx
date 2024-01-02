@@ -2,7 +2,7 @@ import React from 'react'
 
 function Mapskeys() {
   return (
-    <div className='flex justify-end mt-5'>
+    <div className='flex justify-end mt-5 w-[95%]'>
         <div className='flex items-center justify-evenly'>
             <div className='w-3 h-3 mx-3 rounded-full bg-[#b0addf]'></div>
             <p>Very Low</p>

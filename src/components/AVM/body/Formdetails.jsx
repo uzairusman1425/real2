@@ -6,29 +6,29 @@ import { SvgIcon } from "@mui/material";
 function Formdetails() {
     return (
         <div className="bg-white flex">
-            <div id="Card" className="container h-auto border-2 flex flex-col mt-24 mb-10 shadow-lg ">
+            <div id="Card" className="container w-[90%] overflow-hidden sm:mx-auto h-auto border-2 flex flex-col mt-24 mb-10  shadow-lg ">
                 <div id="header" className="flex items-center justify-center my-5">
                     <p className="tracking-[-0.4em] text-gray-300">===================================================</p>
                     <SvgIcon className="ml-5" sx={{ fontSize: 50, color: "#70757c" }} component={RocketIcon} />
                     <p className="mx-5 font-medium text-lg">Get Started</p>
                     <p className="tracking-[-0.4em] text-gray-300">===================================================</p>
                 </div>
-                <div id="sections" className="flex my-10">
-                    <div id="left" className="flex flex-col items-center justify-center h-full w-[50%] text-center border-r-2">
+                <div id="sections" className="flex sm:flex-row flex-col my-10">
+                    <div id="left" className="flex flex-col items-center justify-center h-full sm:w-[50%] text-center sm:border-r-2">
                         <SvgIcon component={PermPhoneMsgIcon} sx={{ fontSize: 50 }} className="my-2" />
                         <p className="my-2 font-light">TO SPEAK TO OUR SALES TEAM</p>
                         <p className="my-2 font-semibold">(00357) 25 507 555</p>
                     </div>
 
-                    <div id="right" className="w-[50%]">
-                        <form action="" className="flex flex-wrap mx-10 justify-between">
-                            <input type="text" placeholder="First Name" className=" border-2 w-[46.7%] py-2 px-2 rounded-md mx-2 my-2" />
-                            <input type="text" placeholder="Last Name" className=" border-2 w-[46.7%] py-2 px-2 rounded-md mx-2 my-2" />
-                            <input type="text" placeholder="Email" className=" border-2 w-[46.7%] py-2 px-2 rounded-md mx-2 my-2" />
-                            <input type="text" placeholder="Phone" className=" border-2 w-[46.7%] py-2 px-2 rounded-md mx-2 my-2" />
-                            <input type="text" placeholder="Company" className=" border-2 w-[46.7%] py-2 px-2 rounded-md mx-2 my-2" />
-                            <input type="text" placeholder="Title" className=" border-2 w-[46.7%] py-2 px-2 rounded-md mx-2 my-2" />
-                            <select name="avmaccount" id="" className=" border-2 w-[100%] py-2 px-2 rounded-md mx-2 my-2 text-gray-400">
+                    <div id="right" className="sm:w-[50%]">
+                        <form action="" className="flex flex-wrap mx-10 justify-center sm:justify-between">
+                            <input type="text" placeholder="First Name" className=" border-2  w-[90%] lg:w-[45%] py-2 px-2 rounded-md mx-2 my-2" />
+                            <input type="text" placeholder="Last Name" className=" border-2 w-[90%] lg:w-[45%] py-2 px-2 rounded-md mx-2 my-2" />
+                            <input type="text" placeholder="Email" className=" border-2 w-[90%] lg:w-[45%] py-2 px-2 rounded-md mx-2 my-2" />
+                            <input type="text" placeholder="Phone" className=" border-2 w-[90%] lg:w-[45%] py-2 px-2 rounded-md mx-2 my-2" />
+                            <input type="text" placeholder="Company" className=" border-2 w-[90%] lg:w-[45%] py-2 px-2 rounded-md mx-2 my-2" />
+                            <input type="text" placeholder="Title" className=" border-2 w-[90%] lg:w-[45%] py-2 px-2 rounded-md mx-2 my-2" />
+                            <select name="avmaccount" id="" className=" border-2  w-[90%] sm:w-[100%] py-2 px-2 rounded-md mx-2 my-2 text-gray-400">
                                 <option value="1" defaultValue={null}>
                                     Interested for corporate AVM account
                                 </option>
@@ -40,7 +40,7 @@ function Formdetails() {
                                 <input
                                     type="button"
                                     value="Request more info"
-                                    className="bg-[#ed1d24] text-white px-8 py-4 rounded mx-auto my-2 self-center cursor-pointer"
+                                    className="bg-[#40464d] hover:bg-[#555d66] text-white px-8 py-4 rounded mx-auto my-2 self-center cursor-pointer"
                                 />
                             </div>
                         </form>

@@ -35,21 +35,7 @@ export default function MultipleSelectCheckmarks( {personName ,setPersonName , c
   };
   
   
-  
-  // const [personName, setPersonName] = React.useState([]);
-  // const names = cityName
-  // // console.log(names);
-  // // console.log(cityName);
-  
-  // const handleChange = (event) => {
-  //   const {
-  //     target: { value },
-  //   } = event;
-  //   setPersonName(
-  //     // On autofill we get a stringified value.
-  //     typeof value === 'string' ? value?.split(',') : value,
-  //   );
-  // };
+
 
   return (
     <div>

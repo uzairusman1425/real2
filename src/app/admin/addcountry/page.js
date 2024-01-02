@@ -28,9 +28,7 @@ function Page() {
 
       toast.success("Country and cities added")
       location.reload();
-      //  console.log("response" , response.data);
     } catch (error) {
-      // Handle errors
       toast.error("Could not add")
       console.error('Error:', error);
     }
@@ -46,9 +44,6 @@ function Page() {
 
   }, [selected])
 
-  useEffect(() => {
-    // console.log(personName);
-  }, [personName])
 
   return (
     <>
@@ -65,7 +60,6 @@ function Page() {
               placeholder="Select Country"
               searchable
               searchPlaceholder="Search countries"
-              // countries={["CY"]}
               className='w-[49%] text-xs p-4 m-2 bg-white rounded-lg'
             />
 

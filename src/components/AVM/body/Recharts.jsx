@@ -108,10 +108,7 @@ export const options = {
           // tooltipEl.style.font = bodyFont.string;
           tooltipEl.style.padding = tooltipModel.padding + 'px ' + tooltipModel.padding + 'px';
           tooltipEl.style.pointerEvents = 'none';
-          // console.log(position.left + typeof(position.left));
-          // // console.log(window.pageXOffset + typeof(window.pageXOffset));
-          // console.log(tooltipModel.caretX + typeof(tooltipModel.caretX) );
-          // console.log(tooltipEl.style.left);
+          
       }
   }
   },
@@ -128,15 +125,14 @@ function Recharts({values}) {
       {
         label: '',
         data: dataset1,
-        backgroundColor: dataset1?.map((_, index) => (dataset1[index] >= 0 ? 'green' : 'red')),
+        backgroundColor: dataset1?.map((_, index) => (dataset1[index] >= 0 ? '#008001' : '#ff0100')),
     },
       
     ],
   };
-    // console.log(values);
   return (
-  <div className='m-0 p-0'>
-    <Bar options={options} data={data} width={20} height={4}  className="z-[999]" />
+  <div className='m-0 p-0 w-[133px]'>
+    <Bar options={options} data={data} width={26.5} height={7}  className="z-[999]" />
   </div>
     );
 }
