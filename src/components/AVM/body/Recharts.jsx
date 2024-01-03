@@ -131,8 +131,8 @@ function Recharts({values}) {
     ],
   };
   return (
-  <div className='' style={{width:'135px'}}>
-    <Bar options={options} data={data} width={20} height={7}  className="z-[999] mx-2 py-[0.35rem] w-full ml-5" style={{width:'100%'}} />
+  <div className='flex justify-center items-center content-center' style={{width:'99%',height:'20%'}}>
+    <Bar options={options} data={data} width={11} height={2}  className="z-[999]  py-[0.25rem] max-w-[150px] "  />
   </div>
     );
 }
