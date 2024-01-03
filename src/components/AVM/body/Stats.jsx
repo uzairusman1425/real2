@@ -222,22 +222,22 @@ function Stats() {
 
   const checkcolor = (value) => {
     if (value >= 20) {
-      return { backgroundColor: '#6aa84f' }
+      return { backgroundColor: '#9ecbb2' }
     }
     else if (value > 10) {
-      return { backgroundColor: '#93c47d' }
+      return { backgroundColor: '#b0e2c6' }
     }
     else if (value > 5) {
-      return { backgroundColor: '#90EE90' }
+      return { backgroundColor: '#dbf1e4' }
     }
     else if (value <= -20) {
-      return { backgroundColor: '#d40404' }
+      return { backgroundColor: '#faab9e' }
     }
     else if (value < -10) {
-      return { backgroundColor: '#d88d8d' }
+      return { backgroundColor: '#fcc5bc' }
     }
     else if (value <= -5) {
-      return { backgroundColor: '#f4cccc' }
+      return { backgroundColor: '#fee4e0' }
     }
   }
 
@@ -321,14 +321,14 @@ function Stats() {
 
 
                           </TableCell>
-                          <TableCell padding="none" margin="none" className='font-medium border-l-2 border-r-2 px-2 py-3'  align="left">€ {row.averagePrice?.toFixed(2)}</TableCell>
+                          <TableCell padding="none" margin="none" className='font-medium border-l-2 border-r-2 px-2 py-3' style={{padding: "0px 8px"}}  align="left">€ {row.averagePrice?.toFixed(2)}</TableCell>
                           {/* <TableCell padding="none" margin="none" style={checkcolor(row.troughCurrent)} className='font-medium border-l-2 border-r-2 px-2' style={{padding: "0px 8px" }} align="left">{row.troughCurrent?.toFixed(2)}%</TableCell> */}
                           <TableCell padding="none" margin="none" style={{...checkcolor(row.troughCurrent), padding: "0px 8px"}} className='font-medium border-l-2 border-r-2 px-2' align="left">{row.troughCurrent?.toFixed(2)}%</TableCell>
                           <TableCell padding="none" margin="none" style={{...checkcolor(row.peakCurrent), padding: "0px 8px"}} className='font-medium border-l-2 border-r-2 px-2'  align="left">{row.peakCurrent?.toFixed(2)}%</TableCell>
                           <TableCell padding="none" margin="none" style={{...checkcolor(row.last12Month), padding: "0px 8px"}} className='font-medium border-l-2 border-r-2 px-2'  align="left">{row.last12Month?.toFixed(2)}%</TableCell>
                           <TableCell padding="none" margin="none" style={{...checkcolor(row.last3Month), padding: "0px 8px"}} className='font-medium border-l-2 border-r-2 px-2' align="left">{row.last3Month?.toFixed(2)}%</TableCell>
                           <TableCell padding="none" margin="none" style={{...checkcolor(row.lastMonth), padding: "0px 8px"}} className='font-medium border-l-2 border-r-2 px-2'  align="left">{row.lastMonth?.toFixed(2)}%</TableCell>
-                          <TableCell padding="none" margin="none" className='font-medium border-l-2 border-r-2  px-1' align="left"><Recharts values={row.yearOnYear} /></TableCell>
+                          <TableCell padding="none" margin="none" className='font-medium border-l-2 border-r-2' align="left"><Recharts values={row.yearOnYear} /></TableCell>
                         </TableRow>
                       ) : null
                     })}
@@ -340,6 +340,7 @@ function Stats() {
                         margin="none"
                         padding="none"
                         className='bg-[#e9f5fe] font-semibold px-2 p-0 m-0 border-l-2'
+                        style={{fontWeight:'600'}}
                       >
                         {Avm}
                       </TableCell>
@@ -349,7 +350,7 @@ function Stats() {
                       <TableCell margin="none" padding="none" style={{padding: "0px 8px",fontWeight: '600' }} className='font-semibold border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgL12?.toFixed(2)}%</TableCell>
                       <TableCell margin="none" padding="none" style={{padding: "0px 8px",fontWeight: '600' }} className='font-semibold border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgL3?.toFixed(2)}%</TableCell>
                       <TableCell margin="none" padding="none" style={{padding: "0px 8px",fontWeight: '600' }} className='font-semibold border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgL?.toFixed(2)}%</TableCell>
-                      <TableCell margin="none" padding="none" style={{fontWeight: '600' }} className='font-semibold border-l-2 border-r-2  bg-[#e9f5fe] px-1' align="left"><Recharts values={[5, -5, 5, -5, 5, -5, 5, -5, 5, -5, 5, -5]} /></TableCell>
+                      <TableCell margin="none" padding="none" style={{fontWeight: '600' }} className='font-semibold border-l-2 border-r-2  bg-[#e9f5fe]' align="left"><Recharts values={[5, -5, 5, -5, 5, -5, 5, -5, 5, -5, 5, -5]} /></TableCell>
                     </TableRow>
                     {emptyRows > 0 && (
                       <TableRow
