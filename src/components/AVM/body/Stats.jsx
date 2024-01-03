@@ -340,7 +340,7 @@ function Stats() {
                         margin="none"
                         padding="none"
                         className='bg-[#e9f5fe] font-semibold px-2 p-0 m-0 border-l-2'
-                        style={{fontWeight:'600'}}
+                        style={{fontWeight:'600',padding: "0px 8px"}}
                       >
                         {Avm}
                       </TableCell>
