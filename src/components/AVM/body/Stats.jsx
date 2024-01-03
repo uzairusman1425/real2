@@ -321,12 +321,12 @@ function Stats() {
 
 
                           </TableCell>
-                          <TableCell padding="none" margin="none" className='font-medium border-l-2 border-r-2 px-2 py-3' align="left">€ {row.averagePrice?.toFixed(2)}</TableCell>
-                          <TableCell padding="none" margin="none" style={checkcolor(row.troughCurrent)} className='font-medium border-l-2 border-r-2 px-2' align="left">{row.troughCurrent?.toFixed(2)}%</TableCell>
-                          <TableCell padding="none" margin="none" style={checkcolor(row.peakCurrent)} className='font-medium border-l-2 border-r-2 px-2' align="left">{row.peakCurrent?.toFixed(2)}%</TableCell>
-                          <TableCell padding="none" margin="none" style={checkcolor(row.last12Month)} className='font-medium border-l-2 border-r-2 px-2' align="left">{row.last12Month?.toFixed(2)}%</TableCell>
-                          <TableCell padding="none" margin="none" style={checkcolor(row.last3Month)} className='font-medium border-l-2 border-r-2 px-2' align="left">{row.last3Month?.toFixed(2)}%</TableCell>
-                          <TableCell padding="none" margin="none" style={checkcolor(row.lastMonth)} className='font-medium border-l-2 border-r-2 px-2' align="left">{row.lastMonth?.toFixed(2)}%</TableCell>
+                          <TableCell padding="none" margin="none" className='font-medium border-l-2 border-r-2 px-2 py-3' style={{padding: "0px 8px" }} align="left">€ {row.averagePrice?.toFixed(2)}</TableCell>
+                          <TableCell padding="none" margin="none" style={checkcolor(row.troughCurrent)} className='font-medium border-l-2 border-r-2 px-2' style={{padding: "0px 8px" }} align="left">{row.troughCurrent?.toFixed(2)}%</TableCell>
+                          <TableCell padding="none" margin="none" style={checkcolor(row.peakCurrent)} className='font-medium border-l-2 border-r-2 px-2' style={{padding: "0px 8px" }} align="left">{row.peakCurrent?.toFixed(2)}%</TableCell>
+                          <TableCell padding="none" margin="none" style={checkcolor(row.last12Month)} className='font-medium border-l-2 border-r-2 px-2' style={{padding: "0px 8px" }} align="left">{row.last12Month?.toFixed(2)}%</TableCell>
+                          <TableCell padding="none" margin="none" style={checkcolor(row.last3Month)} className='font-medium border-l-2 border-r-2 px-2' style={{padding: "0px 8px" }} align="left">{row.last3Month?.toFixed(2)}%</TableCell>
+                          <TableCell padding="none" margin="none" style={checkcolor(row.lastMonth)} className='font-medium border-l-2 border-r-2 px-2' style={{padding: "0px 8px" }} align="left">{row.lastMonth?.toFixed(2)}%</TableCell>
                           <TableCell padding="none" margin="none" className='font-medium border-l-2 border-r-2  px-1' align="left"><Recharts values={row.yearOnYear} /></TableCell>
                         </TableRow>
                       ) : null
@@ -342,13 +342,13 @@ function Stats() {
                       >
                         {Avm}
                       </TableCell>
-                      <TableCell margin="none" padding="none" className='font-semibold border-l-2 border-r-2 px-2 py-3 bg-[#e9f5fe]' align="left">€ {avgAp?.toFixed(2)}</TableCell>
-                      <TableCell margin="none" padding="none" className='font-semibold border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgTrough?.toFixed(2)}%</TableCell>
-                      <TableCell margin="none" padding="none" className='font-semibold border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgPeak?.toFixed(2)}%</TableCell>
-                      <TableCell margin="none" padding="none" className='font-semibold border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgL12?.toFixed(2)}%</TableCell>
-                      <TableCell margin="none" padding="none" className='font-semibold border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgL3?.toFixed(2)}%</TableCell>
-                      <TableCell margin="none" padding="none" className='font-semibold border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgL?.toFixed(2)}%</TableCell>
-                      <TableCell margin="none" padding="none" className='font-semibold border-l-2 border-r-2  bg-[#e9f5fe] px-1' align="left"><Recharts values={[5, -5, 5, -5, 5, -5, 5, -5, 5, -5, 5, -5]} /></TableCell>
+                      <TableCell margin="none" padding="none" style={{padding: "0px 8px",fontWeight: '600' }} className='font-semibold border-l-2 border-r-2 px-2 py-3 bg-[#e9f5fe]' align="left">€ {avgAp?.toFixed(2)}</TableCell>
+                      <TableCell margin="none" padding="none" style={{padding: "0px 8px",fontWeight: '600' }} className='font-semibold border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgTrough?.toFixed(2)}%</TableCell>
+                      <TableCell margin="none" padding="none" style={{padding: "0px 8px",fontWeight: '600' }} className='font-semibold border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgPeak?.toFixed(2)}%</TableCell>
+                      <TableCell margin="none" padding="none" style={{padding: "0px 8px",fontWeight: '600' }} className='font-semibold border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgL12?.toFixed(2)}%</TableCell>
+                      <TableCell margin="none" padding="none" style={{padding: "0px 8px",fontWeight: '600' }} className='font-semibold border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgL3?.toFixed(2)}%</TableCell>
+                      <TableCell margin="none" padding="none" style={{padding: "0px 8px",fontWeight: '600' }} className='font-semibold border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgL?.toFixed(2)}%</TableCell>
+                      <TableCell margin="none" padding="none" style={{fontWeight: '600' }} className='font-semibold border-l-2 border-r-2  bg-[#e9f5fe] px-1' align="left"><Recharts values={[5, -5, 5, -5, 5, -5, 5, -5, 5, -5, 5, -5]} /></TableCell>
                     </TableRow>
                     {emptyRows > 0 && (
                       <TableRow
