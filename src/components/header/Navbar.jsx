@@ -16,9 +16,9 @@ function index({page}) {
               <Link href="/AVM" className= {page==='AVM'? "mx-2 text-[#3a5172] font-medium border-b-[1px] px-3 py-3 pb-1  border-b-[#3a5172] z-50": "mx-2 hover:text-[#3a5172] hover:font-normal hover:border-b-[#3a5172] hover:border-b-[1px]  text-[#7a7a7a] font-light  px-3 py-3 pb-1  border-b-[#f6f8f5] z-50"}>AVM</Link>
         </div>
         <div className=''>
-          <Image src={wave} alt="wave" width={Fullscreen}  className='navbarimage absolute -top-24 z-10 min-w-[105vw] h-[25vh] ' style={{transform:"scale(-1,1)",fill:"black",color: "black"}} />
-          <Image src={wave2} alt="wave" width={Fullscreen}  className='navbarimage absolute -top-24 z-20 right-0 min-w-[105vw] h-[25vh] ' style={{opacity:"0.4",fill:"black",color: "black",translate:"translateX(1000px)",}} />
-          <Image src={wave2} alt="wave" width={Fullscreen}  className='navbarimage absolute -top-24 z-20 right-0 min-w-[105vw] h-[25vh]  ' style={{opacity:"0.4",fill:"black",color: "black",translate:"translateX(1px)",}} />
+          <Image src={wave} alt="wave" width={Fullscreen}  className='navbarimage absolute -top-24 z-10 md:min-w-[105vw] sm:min-w-[216vw] min-w-[232vw] sm:h-[32vh] h-[29vh] ' style={{transform:"scale(-1,1)",fill:"black",color: "black"}} />
+          <Image src={wave2} alt="wave" width={Fullscreen}  className='navbarimage absolute -top-24 z-20 right-0 md:min-w-[105vw] sm:min-w-[216vw] min-w-[232vw] sm:h-[32vh] h-[29vh] ' style={{opacity:"0.4",fill:"black",color: "black",translate:"translateX(1000px)",}} />
+          <Image src={wave2} alt="wave" width={Fullscreen}  className='navbarimage absolute -top-24 z-20 right-0 md:min-w-[105vw] sm:min-w-[216vw] min-w-[232vw] sm:h-[32vh] h-[29vh]  ' style={{opacity:"0.4",fill:"black",color: "black",translate:"translateX(1px)",}} />
         </div>
 
       </div>
