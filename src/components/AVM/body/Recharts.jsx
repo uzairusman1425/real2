@@ -132,7 +132,7 @@ function Recharts({values}) {
   };
   return (
   <div className='w-[133px]'>
-    <Bar options={options} data={data} width={26.5} height={7}  className="z-[999] pl=10" />
+    <Bar options={options} data={data} width={26.5} height={7}  className="z-[999] pl-10" />
   </div>
     );
 }
