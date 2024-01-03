@@ -321,12 +321,13 @@ function Stats() {
 
 
                           </TableCell>
-                          <TableCell padding="none" margin="none" className='font-medium border-l-2 border-r-2 px-2 py-3' style={{padding: "0px 8px" }} align="left">€ {row.averagePrice?.toFixed(2)}</TableCell>
-                          <TableCell padding="none" margin="none" style={checkcolor(row.troughCurrent)} className='font-medium border-l-2 border-r-2 px-2' style={{padding: "0px 8px" }} align="left">{row.troughCurrent?.toFixed(2)}%</TableCell>
-                          <TableCell padding="none" margin="none" style={checkcolor(row.peakCurrent)} className='font-medium border-l-2 border-r-2 px-2' style={{padding: "0px 8px" }} align="left">{row.peakCurrent?.toFixed(2)}%</TableCell>
-                          <TableCell padding="none" margin="none" style={checkcolor(row.last12Month)} className='font-medium border-l-2 border-r-2 px-2' style={{padding: "0px 8px" }} align="left">{row.last12Month?.toFixed(2)}%</TableCell>
-                          <TableCell padding="none" margin="none" style={checkcolor(row.last3Month)} className='font-medium border-l-2 border-r-2 px-2' style={{padding: "0px 8px" }} align="left">{row.last3Month?.toFixed(2)}%</TableCell>
-                          <TableCell padding="none" margin="none" style={checkcolor(row.lastMonth)} className='font-medium border-l-2 border-r-2 px-2' style={{padding: "0px 8px" }} align="left">{row.lastMonth?.toFixed(2)}%</TableCell>
+                          <TableCell padding="none" margin="none" className='font-medium border-l-2 border-r-2 px-2 py-3'  align="left">€ {row.averagePrice?.toFixed(2)}</TableCell>
+                          {/* <TableCell padding="none" margin="none" style={checkcolor(row.troughCurrent)} className='font-medium border-l-2 border-r-2 px-2' style={{padding: "0px 8px" }} align="left">{row.troughCurrent?.toFixed(2)}%</TableCell> */}
+                          <TableCell padding="none" margin="none" style={{...checkcolor(row.troughCurrent), padding: "0px 8px"}} className='font-medium border-l-2 border-r-2 px-2' align="left">{row.troughCurrent?.toFixed(2)}%</TableCell>
+                          <TableCell padding="none" margin="none" style={{...checkcolor(row.peakCurrent), padding: "0px 8px"}} className='font-medium border-l-2 border-r-2 px-2'  align="left">{row.peakCurrent?.toFixed(2)}%</TableCell>
+                          <TableCell padding="none" margin="none" style={{...checkcolor(row.last12Month), padding: "0px 8px"}} className='font-medium border-l-2 border-r-2 px-2'  align="left">{row.last12Month?.toFixed(2)}%</TableCell>
+                          <TableCell padding="none" margin="none" style={{...checkcolor(row.last3Month), padding: "0px 8px"}} className='font-medium border-l-2 border-r-2 px-2' align="left">{row.last3Month?.toFixed(2)}%</TableCell>
+                          <TableCell padding="none" margin="none" style={{...checkcolor(row.lastMonth), padding: "0px 8px"}} className='font-medium border-l-2 border-r-2 px-2'  align="left">{row.lastMonth?.toFixed(2)}%</TableCell>
                           <TableCell padding="none" margin="none" className='font-medium border-l-2 border-r-2  px-1' align="left"><Recharts values={row.yearOnYear} /></TableCell>
                         </TableRow>
                       ) : null
