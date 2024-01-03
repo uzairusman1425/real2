@@ -342,13 +342,13 @@ function Stats() {
                       >
                         {Avm}
                       </TableCell>
-                      <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 px-2 py-3 bg-[#e9f5fe]' align="left">€ {avgAp?.toFixed(2)}</TableCell>
-                      <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgTrough?.toFixed(2)}%</TableCell>
-                      <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgPeak?.toFixed(2)}%</TableCell>
-                      <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgL12?.toFixed(2)}%</TableCell>
-                      <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgL3?.toFixed(2)}%</TableCell>
-                      <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgL?.toFixed(2)}%</TableCell>
-                      <TableCell margin="none" padding="none" className='font-medium border-l-2 border-r-2 py-3 bg-[#e9f5fe] px-1' align="left"><Recharts values={[5, -5, 5, -5, 5, -5, 5, -5, 5, -5, 5, -5]} /></TableCell>
+                      <TableCell margin="none" padding="none" className='font-semibold border-l-2 border-r-2 px-2 py-3 bg-[#e9f5fe]' align="left">€ {avgAp?.toFixed(2)}</TableCell>
+                      <TableCell margin="none" padding="none" className='font-semibold border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgTrough?.toFixed(2)}%</TableCell>
+                      <TableCell margin="none" padding="none" className='font-semibold border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgPeak?.toFixed(2)}%</TableCell>
+                      <TableCell margin="none" padding="none" className='font-semibold border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgL12?.toFixed(2)}%</TableCell>
+                      <TableCell margin="none" padding="none" className='font-semibold border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgL3?.toFixed(2)}%</TableCell>
+                      <TableCell margin="none" padding="none" className='font-semibold border-l-2 border-r-2 px-2 bg-[#e9f5fe]' align="left">{avgL?.toFixed(2)}%</TableCell>
+                      <TableCell margin="none" padding="none" className='font-semibold border-l-2 border-r-2 py-3 bg-[#e9f5fe] px-1' align="left"><Recharts values={[5, -5, 5, -5, 5, -5, 5, -5, 5, -5, 5, -5]} /></TableCell>
                     </TableRow>
                     {emptyRows > 0 && (
                       <TableRow
