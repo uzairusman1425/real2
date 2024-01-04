@@ -42,7 +42,7 @@ function HeatmapLayer({ center }) {
         }
 
         filteredData.forEach(item => {
-            console.log(item);
+
             const heatmap = new window.google.maps.visualization.HeatmapLayer({
                 data: [item.location],
                 map: map,
