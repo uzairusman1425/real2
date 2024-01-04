@@ -12,30 +12,19 @@ function HeatmapLayer({ center }) {
     const [firstLatLng, setFirstLatLng] = useState(null);
 
     const setGradient = (itemValue) => {
-        if (itemValue <= 200) {
-            return ['rgba(0, 255, 255, 0)', 'rgb(147,112,219)'];
-        } else if (itemValue <= 500) {
-            return ['rgba(0, 255, 255, 0)', 'rgb(147,112,219)', 'rgb(124,252,0)'];
-        } else if (itemValue <= 1000) {
-            return ['rgba(0, 255, 255, 0)', 'rgb(147,112,219)', 'rgb(124,252,0)', 'rgb(255,255,0)'];
-        } else if (itemValue <= 1500) {
-            return [
-                'rgba(0, 255, 255, 0)',
-                'rgb(147,112,219)',
-                'rgb(124,252,0)',
-                'rgb(255,99,71)',
-                'rgb(255,99,71)',
-            ];
-        } else {
-            return [
-                'rgba(0, 255, 255, 0)',
-                'rgb(147,112,219)',
-                'rgb(124,252,0)',
-                'rgb(255,99,71)',
-                'rgb(255,69,0)',
-            ];
+        if (itemValue <= 500) {
+            return ['rgba(0, 255, 255, 0)', '#b0addf'];
+        } else if (itemValue >= 501 && itemValue <= 900) {
+            return ['rgba(0, 255, 255, 0)', '#b0addf', '#71F663'];
+        } else if (itemValue >= 901 && itemValue <= 1300) {
+            return ['rgba(0, 255, 255, 0)', '#b0addf', '#71F663', '#f6f068'];
+        } else if (itemValue >= 1301 && itemValue <= 1700) {
+            return ['rgba(0, 255, 255, 0)', '#b0addf', '#71F663', '#f6f068', '#f9a76e'];
+        } else if (itemValue > 1701) {
+            return ['rgba(0, 255, 255, 0)', '#b0addf', '#71F663', '#f6f068', '#f9a76e', '#f37063'];
         }
     };
+
 
     useEffect(() => {
         if (!Avm || !map) return;
