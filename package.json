@@ -16,6 +16,7 @@
     "@mui/material": "^5.14.18",
     "@mui/x-charts": "^6.18.2",
     "@react-google-maps/api": "^2.19.2",
+    "@vercel/speed-insights": "^1.0.3",
     "axios": "^1.6.2",
     "bcrypt": "^5.1.1",
     "chart.js": "^4.4.0",
